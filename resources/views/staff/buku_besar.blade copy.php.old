@@ -1,0 +1,104 @@
+@extends('layouts.v_template')
+
+@section('content')
+<section class="section">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card ">
+                <div class="card-header d-flex justify-content-between">
+                    <h4>Buku besar</h4>
+                </div>
+                <div class="card-body">
+                    @foreach ($bukubesar as $row)
+                    {{-- @dump($row) --}}
+                    {{-- <p>Nama Akun : {{ $row->nama_akun }}</p> --}}
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Tanggal</th>
+                                <th>Keterangan</th>
+                                <th>Ref</th>
+                                {{-- debit kredit jurnal --}}
+                                <th>Debet</th>
+                                <th>Kredit</th>
+                                <th class="text-center">Saldo</th>
+                            </tr>
+                            {{-- <tr>
+                hasil hitungan
+                <th>Debit</th>
+                <th>Kredit</th>
+              </tr> --}}
+                        </thead>
+                        <tbody>
+                            <?php $bukuBesar = getBukuBesarByNamaAkun($row->nama_akun); ?>
+                            <?php $bukuBesarArr = json_decode($bukuBesar, true); ?>
+                            <?php
+                            //  if(has_next($bukuBesarArr)) {
+                            //   $nexEl = next($bukuBesarArr);
+                            //  }
+                            //  if(has_prev($bukuBesarArr)) {
+                            //   $prevEl = prev($bukuBesarArr);
+                            //  }
+                            $prevEl = null;
+                            ?>
+
+                            @foreach ($bukuBesarArr as $key => $row)
+                            <tr>
+                                <td>{{ $row['tgl_transaksi'] }}</td>
+                                <td>{{ $row['nama_akun'] }}</td>
+                                <td>{{ $row['no_akun'] }}</td>
+                                <td>{{ 'Rp. ' . number_format($row['debit_jurnal']) }}</td>
+                                <td>{{ 'Rp. ' . number_format($row['kredit_jurnal']) }}</td>
+                                <td>
+
+                                    {{-- @if ($key == 0)
+                    {{ ($row['debit_akun'] + $row['kredit_akun']) - ($row['debit_jurnal'] + $row['kredit_jurnal']) }}
+                                    @else --}}
+                                    <?php
+
+                                    if (has_next($bukuBesarArr)) {
+                                        $nexEl = next($bukuBesarArr);
+                                    }
+
+                                    if ($prevEl) {
+                                        if ($key < 2) {
+                                            // echo ($prevEl['debit_akun'] + $prevEl['kredit_akun']) - ($prevEl['debit_jurnal'] + $prevEl['kredit_jurnal']);
+                                            echo 'Rp. ' . number_format($prevEl['debit_akun'] + $prevEl['kredit_akun'] - ($prevEl['debit_jurnal'] + $prevEl['kredit_jurnal']) + $row['debit_jurnal']);
+                                            $row['debit_akun'] = $prevEl['debit_akun'] + $prevEl['kredit_akun'] - $prevEl['debit_jurnal'] + $prevEl['kredit_jurnal'] + $row['debit_jurnal'];
+                                        } else {
+                                            $row['debit_akun'] = $prevEl['debit_akun'] + $row['debit_jurnal'];
+                                            echo 'Rp. ' . number_format($prevEl['debit_akun'] + $row['debit_jurnal']);
+                                        }
+                                        // echo $tempVal;
+                                    } else {
+                                        echo 'Rp. ' . number_format($row['debit_akun'] + $row['kredit_akun'] - ($row['debit_jurnal'] + $row['kredit_jurnal']));
+                                    }
+
+                                    $prevEl = $row;
+
+                                    ?>
+
+                                    {{-- {{ (($prevEl['debit_akun'] + $prevEl['kredit_akun']) - ($prevEl['debit_jurnal'] + $prevEl['kredit_jurnal'])) - $nexEl['debit_jurnal'] }} --}}
+                                    {{-- @endif --}}
+
+                                </td>
+                                <td>
+                                    {{-- {{ $row->kredit_akun }} --}}
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endsection
+@section('script')
+<script>
+    // $('#liDataAkun').addClass('active');
+</script>
+@endsection
