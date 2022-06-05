@@ -10,6 +10,7 @@ use App\Models\Pelanggan;
 use App\Models\Jurnal;
 use App\Models\BukuBesar;
 use App\Models\NeracaSaldo;
+use Dompdf\Dompdf;
 use Illuminate\Support\Facades\DB;
 use File;
 
@@ -111,6 +112,27 @@ class Staff extends Controller
         $data['akun'] = Akun::all();
         $data['bukubesar'] = BukuBesar::all();
         return view('staff.laporan_neraca', $data);
+    }
+
+
+    public function cetakLabaRugi()
+    {
+        $html = view('staff.cetak_laba_rugi');
+
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('Legal', 'potrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream("dompdf_out.pdf", array("Attachment" => false));
+        exit(0);
     }
 
     public function tambah_akun(Request $request)

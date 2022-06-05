@@ -107,6 +107,9 @@ Route::group(['middleware' => ['auth', 'ceklevel:staff']], function () {
         Route::get('akun/upload_akun', 'Staff@form')->name('akun.form');
         // Route::get('akun/index', 'Staff@index')->name('akun.index');
         // Route::post('akun/upload_akun', 'Staff@upload_akun')->name('akun.upload_akun');
+
+        // CETAK HERE
+        Route::get('/cetak_laba_rugi', [Staff::class, 'cetakLabaRugi']);
     });
 });
 
