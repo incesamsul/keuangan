@@ -32,7 +32,7 @@
                           <a href="akun/delete/{{ $row->id_akun }}" class="btn btn-danger"><i
                                 class="fas fa-trash"></i>Hapus</a>
                           <a data-toggle="modal" data-target="modalUpdate-{{ $row->id_akun }}"
-                                class="btn btn-primary"><i class="fas fa-pen"></i>Edit</a>
+                                class="btn btn-primary text-light"><i class="fas fa-pen"></i>Edit</a>
                         </td>
                       </tr>
                   @endforeach
@@ -44,7 +44,7 @@
       </div>
   </section>
 
-  
+
 
 <!-- Modal -->
 <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
@@ -80,7 +80,7 @@
 
   {{-- Modal Update --}}
   @foreach ($akun as $item)
-    <div class="modal fade" id="modalUpdate-{{ $item->id_akun }}" tabindex="-1" 
+    <div class="modal fade" id="modalUpdate-{{ $item->id_akun }}" tabindex="-1"
       aria-labelledby="formModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">

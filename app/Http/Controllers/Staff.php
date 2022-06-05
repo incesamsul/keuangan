@@ -91,17 +91,26 @@ class Staff extends Controller
 
     public function laba_rugi()
     {
-        return view('staff.laba_rugi');
+        $data['neracasaldo'] = NeracaSaldo::all();
+        $data['akun'] = Akun::all();
+        $data['bukubesar'] = BukuBesar::all();
+        return view('staff.laba_rugi', $data);
     }
 
     public function laporan_modal()
     {
-        return view('staff.laporan_modal');
+        $data['neracasaldo'] = NeracaSaldo::all();
+        $data['akun'] = Akun::all();
+        $data['bukubesar'] = BukuBesar::all();
+        return view('staff.laporan_modal', $data);
     }
 
     public function laporan_neraca()
     {
-        return view('staff.laporan_neraca');
+        $data['neracasaldo'] = NeracaSaldo::all();
+        $data['akun'] = Akun::all();
+        $data['bukubesar'] = BukuBesar::all();
+        return view('staff.laporan_neraca', $data);
     }
 
     public function tambah_akun(Request $request)
@@ -174,7 +183,7 @@ class Staff extends Controller
         //         'file' => 'required|file|max:2000'
         //     ]);
 
-        //     $uploadedFile = $request->jurnal('file');        
+        //     $uploadedFile = $request->jurnal('file');
 
         //     $path = $uploadedFile->store('public/files');
 
@@ -185,7 +194,7 @@ class Staff extends Controller
 
         //     return redirect()
         //         ->back()
-        //         ->withSuccess(sprintf('File %s has been uploaded.', $file->title)); 
+        //         ->withSuccess(sprintf('File %s has been uploaded.', $file->title));
         // }
         // $request->validate([
         //     'filename'   => 'required',
@@ -207,11 +216,11 @@ class Staff extends Controller
         // //menyimpan data ke database
         // $upload->save();
 
-        // if ($request->hasfile('filename')) {            
+        // if ($request->hasfile('filename')) {
         //     $filename = round(microtime(true) * 1000).'-'.str_replace(' ','-',$request->file('filename')->getClientOriginalName());
         //     $request->file('filename')->move(public_path('images'), $filename);
         //      Uploads::create(
-        //             [                        
+        //             [
         //                 'upload' =>$filename
         //             ]
         //         );

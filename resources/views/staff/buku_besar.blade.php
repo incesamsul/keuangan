@@ -50,7 +50,7 @@
 
 
     <!-- Modal -->
-    @foreach ($jurnal as $item)
+    @foreach ($akun as $item)
         <div class="modal fade" id="exampleModal-{{ $item->id_akun }}" tabindex="-1"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
@@ -62,7 +62,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <table id="buku_besar" class="table table-striped table-bordered" style="width:100%">
+                        <table id="" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Tanggal</th>
