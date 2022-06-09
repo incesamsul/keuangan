@@ -39,9 +39,21 @@
             @if (auth()->user()->role == 'staff')
                 {{-- MENU STAFF --}}
                 <li class="menu-header">Staff</li>
-                <li id="liData">
-                    <a href="/staff/data_akun"><i class="fas fa-list-alt"></i>
-                        <span>Data Akun</span></a>        
+                <li class="nav-item dropdown " id="liData">
+                    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-list-alt"></i>
+                        <span>Data</span></a>
+                    <ul class="dropdown-menu">
+                        <li id="liManajemenPengguna"><a class="nav-link" href="/staff/data_akun">Data Akun</a>
+                        </li>
+                    </ul>
+                    <ul class="dropdown-menu">
+                        <li id="liManajemenPengguna"><a class="nav-link" href="/staff/data_pelanggan">Data Pelanggan</a>
+                        </li>
+                    </ul>
+                    <ul class="dropdown-menu">
+                        <li id="liManajemenPengguna"><a class="nav-link" href="/staff/data_pemasok">Data Pemasok</a>
+                        </li>
+                    </ul>
                 </li>
                 <li id="liData">
                     <a href="/staff/jurnal"><i class="fas fa-fax"></i>
@@ -64,11 +76,11 @@
                     </ul>
                     <ul class="dropdown-menu">
                         <li id="liManajemenPengguna"><a class="nav-link" href="/staff/laporan_modal">Laporan
-                                modal</a></li>
+                                Modal</a></li>
                     </ul>
                     <ul class="dropdown-menu">
                         <li id="liManajemenPengguna"><a class="nav-link" href="/staff/laporan_neraca">Laporan
-                                neraca</a></li>
+                                Neraca</a></li>
                     </ul>
                 </li>
                 {{-- END OF MENU STAFF --}}
@@ -86,11 +98,11 @@
                     </ul>
                     <ul class="dropdown-menu">
                         <li id="liManajemenPengguna"><a class="nav-link" href="/pimpinan/laporan_modal">Laporan
-                                modal</a></li>
+                                Modal</a></li>
                     </ul>
                     <ul class="dropdown-menu">
                         <li id="liManajemenPengguna"><a class="nav-link" href="/pimpinan/laporan_neraca">Laporan
-                                neraca</a></li>
+                                Neraca</a></li>
                     </ul>
                 </li>
                 {{-- END OF MENU PIMPINAN --}}

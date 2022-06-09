@@ -13,10 +13,10 @@
                     <table id="perUser" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <td>No Akun</td>
-                                <td>Nama Akun</td>
-                                <td>Debit</td>
-                                <td>Kredit</td>
+                                <th>No Akun</th>
+                                <th>Nama Akun</th>
+                                <th>Debit</th>
+                                <th>Kredit</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,20 +31,30 @@
                                         @if (substr($item->no_akun,0,1) == 1 || substr($item->no_akun,0,1) == 6)
                                             {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('debit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('kredit')) }}
                                         @else
-                                            Rp. ----
+                                            Rp. -
                                         @endif
                                     </td>
                                     <td>
                                         @if (substr($item->no_akun,0,1) == 2 || substr($item->no_akun,0,1) == 3 || substr($item->no_akun,0,1) == 4)
-                                            {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('debit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('kredit')) }}
+                                            {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('kredit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('debit')) }}
                                         @else
-                                            Rp. ----
+                                            Rp. -
                                         @endif
                                     </td>
 
                                 </tr>
                             @endforeach
+                                <tr>
+                                    <th colspan="2" class="text-center">TOTAL</th>
+                                    <th class="text-center">Rp. 
+                                        Rp. {{ number_format($neracasaldo->sum('debit'), 0, ',', '.') }}
+                                    </th>
+                                    <th class="text-center">Rp.
+                                        {{ number_format($akun->sum('kredit'), 0, ',', '.') }}
+                                    </th>
+                                </tr>
 
+                              
                         </tbody>
                     </table>
                 </div>

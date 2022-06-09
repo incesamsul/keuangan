@@ -95,6 +95,18 @@ Route::group(['middleware' => ['auth', 'ceklevel:staff']], function () {
         Route::get('/akun/delete/{id}', [Staff::class, 'akunDelete'])->name('akun.delete');
         Route::post('/akun/update_akun/{id}', [Staff::class, 'update_akun'])->name('akun.update_akun');
 
+        Route::get('/', 'Staff@pemasok')->name('root');
+        Route::get('/pemasok/{id}/edit_dataPemasok', 'Staff@update_dataPemasok')->name('pemasok.update_dataPemasok');
+        Route::post('/pemasok/{id}', 'Staff@edit_dataPemasok')->name('pemasok.edit_dataPemasok');
+        Route::get('/pemasok/delete/{id}', [Staff::class, 'pemasokDelete'])->name('pemasok.delete');
+        Route::post('/pemasok/update_dataPemasok/{id}', [Staff::class, 'update_dataPpemasok'])->name('pemasok.update_dataPemasok');
+
+        Route::get('/', 'Staff@pelanggan')->name('root');
+        Route::get('/pelanggan/{id}/edit_dataPelanggan', 'Staff@update_dataPelanggan')->name('pelanggan.update_dataPelanggan');
+        Route::post('/pelanggan/{id}', 'Staff@edit_dataPelanggan')->name('pelanggan.edit_dataPelanggan');
+        Route::get('/pelanggan/delete/{id}', [Staff::class, 'pelangganDelete'])->name('pelanggan.delete');
+        Route::post('/pelanggan/update_dataPelanggan/{id}', [Staff::class, 'update_dataPelanggan'])->name('pelanggan.update_dataPelanggan');
+
         Route::post('/tambah_akun', [Staff::class, 'tambah_akun']);
         Route::post('/tambah_pemasok', [Staff::class, 'tambah_pemasok']);
         Route::post('/tambah_pelanggan', [Staff::class, 'tambah_pelanggan']);
@@ -105,6 +117,13 @@ Route::group(['middleware' => ['auth', 'ceklevel:staff']], function () {
         Route::post('jurnal/upload', 'Staff@upload')->name('jurnal.upload');
 
         Route::get('akun/upload_akun', 'Staff@form')->name('akun.form');
+        // Route::get('akun/index', 'Staff@index')->name('akun.index');
+        // Route::post('akun/upload_akun', 'Staff@upload_akun')->name('akun.upload_akun');
+
+        Route::get('akun/upload_dataPemasok', 'Staff@form')->name('pemasok.form');
+        // Route::get('akun/index', 'Staff@index')->name('akun.index');
+        // Route::post('akun/upload_akun', 'Staff@upload_akun')->name('akun.upload_akun');
+        Route::get('akun/upload_dataPelanggan', 'Staff@form')->name('pelanggan.form');
         // Route::get('akun/index', 'Staff@index')->name('akun.index');
         // Route::post('akun/upload_akun', 'Staff@upload_akun')->name('akun.upload_akun');
 
@@ -120,5 +139,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:pimpinan']], function () {
         Route::get('/laba_rugi', [Pimpinan::class, 'laba_rugi']);
         Route::get('/laporan_modal', [Pimpinan::class, 'laporan_modal']);
         Route::get('/laporan_neraca', [Pimpinan::class, 'laporan_neraca']);
+
+        //CETAK HERE
+        Route::get('/cetak_laba_rugi', [Pimpinan::class, 'cetakLabaRugi']);
     });
 });

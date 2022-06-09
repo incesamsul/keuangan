@@ -21,6 +21,22 @@
         <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="card card-statistic-2">
                 <div class="card-icon shadow-warning bg-warning">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Kas</h4>
+                    </div>
+                    <div class="card-body">
+                        
+                        {{-- <p class="text-small mt-3">{{ date('l, d M Y H:i:s') }}</p> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card card-statistic-2">
+                <div class="card-icon shadow-warning bg-warning">
                     <i class="fas fa-file-invoice-dollar"></i>
                 </div>
                 <div class="card-wrap">
@@ -53,39 +69,27 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-12">
-            <div class="card card-statistic-2">
-                <div class="card-icon shadow-warning bg-warning">
-                    <i class="fas fa-money-bill-1-wave"></i>
-                </div>
-                <div class="card-wrap">
-                    <div class="card-header">
-                        <h4>kas</h4>
-                    </div>
-                    <div class="card-body">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{-- <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Anda berada di halaman dashboard</h4>
+                    <h4>Hi Welcome guyysss <i class="far fa-laugh-wink"></i> </h4>
                 </div>
                 <div class="card-body">
-                    <h5>Hi, Selamat datang</h5>
-                    <img src="https://drive.google.com/file/d/1ZpoTsb5hwkoD8wh8hAITpzhKXk9Q0x_f/view?ups=drivesdk">
-                    <p>Segala aktifitas yang anda lakukan akan kami pantau, mhon gunakan aplikasi ini dengan bijaksana.
+                    <h5>CV Tritama Inti Persada</h5>
+                    <p><br><img src={{ asset('img/logo.png') }} height="100" width="150" style="text-align: center"></p>
+                    <p><br>Visi : Menjadi bagian pengadaan barang dan jasa profesional dan unggul.
                     </p>
-                    <p>Dengan adanya apilkasi ini kami berharap agar mempermudah Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quibusdam quia rem ab, aspernatur nisi asperiores laudantium repellendus, optio ad sequi! Blanditiis quo, rerum eligendi maiores dicta ipsum iure! Inventore!lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam aliquid fuga ea expedita culpa praesentium provident magnam. Iste, illum! Nesciunt ullam itaque ratione asperiores eaque corporis minima, recusandae quo eligendi!</p>
+                    <p>
+                         Misi : Menyekenggarakan pangadaan barang dan jasa secara akuntabel, sesuai dengan aturan dan ketentuan yang berlaku sehingga dapat dipertanggungjawabkan kepada pihak yang berkepentingan.
+                    </p>
+                    <p>
+                         Tujuan : Menyediakan barang dan jasa yang berkualitas sesuai kebutuhan unit kerja yang mendukung pencapaian keberhasilan implementasi kebijakan, program, dan kegiatan.
+                    </p>
                 </div>
             </div>
         </div>
 
-    </div> --}}
+    </div>
 </section>
 @endsection
 

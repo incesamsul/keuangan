@@ -38,11 +38,7 @@ class Admin extends Controller
         return view('pages.rekaptulasi_data.index', $data);
     }
 
-
-
-
-
-
+    
     // fetch data user by admin
     function fetchData(Request $request)
     {

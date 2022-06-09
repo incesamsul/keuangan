@@ -26,6 +26,8 @@
                                     <th>Ref</th>
                                     <th>Debet</th>
                                     <th>Kredit</th>
+                                    <th>Pelanggan</th>
+                                    <th>Pemasok</th>
                                     <th>Bukti Transaksi</th>
                                     <th>Action</th>
                                 </tr>
@@ -39,6 +41,8 @@
                                         <td>{{ $row->akun->no_akun }}</td>
                                         <td>{{ 'Rp. ' . number_format($row->debit) }}</td>
                                         <td>{{ 'Rp. ' . number_format($row->kredit) }}</td>
+                                        <td>{{ $row->pelanggan }}</td>
+                                        <td>{{ $row->pemasok }}</td>
                                         <td>
 
                                             <!-- Button trigger modal -->

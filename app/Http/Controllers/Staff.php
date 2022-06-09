@@ -30,17 +30,31 @@ class Staff extends Controller
         return redirect()->back();
     }
 
-    // public function data_pemasok()
-    // {
-    //     $data['pemasok'] = Pemasok::all();
-    //     return view('staff.data_pemasok', $data);
-    // }
+    public function data_pemasok()
+    {
+        $data['pemasok'] = Pemasok::all();
+        return view('staff.data_pemasok', $data);
+    }
+    
+    public function pemasokDelete($id)
+    {
+        $pemasok_delete = Pemasok::where('id_pemasok', $id);
+        $pemasok_delete->delete();
+        return redirect()->back();
+    }
 
-    // public function data_pelanggan()
-    // {
-    //     $data['pelanggan'] = Pelanggan::all();
-    //     return view('staff.data_pelanggan', $data);
-    // }
+    public function data_pelanggan()
+    {
+        $data['pelanggan'] = Pelanggan::all();
+        return view('staff.data_pelanggan', $data);
+    }
+
+    public function pelangganDelete($id)
+    {
+        $pelanggan_delete = Pelanggan::where('id_pelanggan', $id);
+        $pelanggan_delete->delete();
+        return redirect()->back();
+    }
 
     public function jurnal()
     {
@@ -148,27 +162,27 @@ class Staff extends Controller
         return redirect()->back()->with('message', 'Data akun Berhasil di tambah');
     }
 
-    // public function tambah_pemasok(Request $request)
-    // {
-    //     Pemasok::create([
-    //         'nama_pemasok' => $request->nama_pemasok,
-    //         'alamat_pemasok' => $request->alamat_pemasok,
-    //         'telp_pemasok' => $request->telp_pemasok,
-    //     ]);
+    public function tambah_pemasok(Request $request)
+    {
+        Pemasok::create([
+            'nama_pemasok' => $request->nama_pemasok,
+            'alamat_pemasok' => $request->alamat_pemasok,
+            'telp_pemasok' => $request->telp_pemasok,
+        ]);
 
-    //     return redirect()->back()->with('message', 'Data pemasok Berhasil di tambah');
-    // }
+        return redirect()->back()->with('message', 'Data pemasok Berhasil di tambah');
+    }
 
-    // public function tambah_pelanggan(Request $request)
-    // {
-    //     Pelanggan::create([
-    //         'nama_pelanggan' => $request->nama_pelanggan,
-    //         'alamat_pelanggan' => $request->alamat_pelanggan,
-    //         'telp_pelanggan' => $request->telp_pelanggan,
-    //     ]);
+    public function tambah_pelanggan(Request $request)
+    {
+        Pelanggan::create([
+            'nama_pelanggan' => $request->nama_pelanggan,
+            'alamat_pelanggan' => $request->alamat_pelanggan,
+            'telp_pelanggan' => $request->telp_pelanggan,
+        ]);
 
-    //     return redirect()->back()->with('message', 'Data pelanggan Berhasil di tambah');
-    // }
+        return redirect()->back()->with('message', 'Data pelanggan Berhasil di tambah');
+    }
 
     public function tambah_transaksi(Request $request)
     {
@@ -261,6 +275,7 @@ class Staff extends Controller
         return redirect()->back()->with('message', 'Data pelanggan Berhasil di tambah');
     }
 
+    //JURNAL
     public function update(Request $request, $id)
     {
 
@@ -307,7 +322,7 @@ class Staff extends Controller
     }
 
 
-
+    //DATA AKUN
     public function update_akun(Request $request, $id)
     {
         Akun::where('id_akun', $id)
@@ -329,6 +344,68 @@ class Staff extends Controller
             [
                 'no_akun' => $request->no_akun,
                 'nama_akun' => $request->nama_akun,
+
+            ]
+        );
+
+        return response()->json(['success' => true]);
+    }
+
+    //DATA PELANGGAN
+    public function update_dataPelanggan(Request $request, $id)
+    {
+        Akun::where('id_pelanggan', $id)
+            ->update_akun([
+                // 'no_bukti' => $request->no_bukti,
+                'nama_pelanggan' => $request->nama_pelanggan,
+                'alamat_pelanggan' => $request->alamat_pelanggan,
+                'telp_pelanggan' => $request->telp_pelanggan,
+            ]);
+
+        return redirect()->back()->with('message', 'Data pelanggan Berhasil di Update');
+    }
+
+    public function edit_dataPelanggan(Request $request, akun $id)
+    {
+        Akun::updateOrCreate(
+            [
+                'id' => $id
+            ],
+            [
+                'nama_pelanggan' => $request->nama_pelanggan,
+                'alamat_pelanggan' => $request->alamat_pelanggan,
+                'telp_pelanggan' => $request->telp_pelanggan,
+
+            ]
+        );
+
+        return response()->json(['success' => true]);
+    }
+
+    //DATA PEMASOK
+    public function update_dataPemasok(Request $request, $id)
+    {
+        Akun::where('id_akun', $id)
+            ->update_akun([
+                // 'no_bukti' => $request->no_bukti,
+                'nama_pemasok' => $request->nama_pemasok,
+                'alamat_pemasok' => $request->alamat_pemasok,
+                'telp_pemasok' => $request->telp_pemasok,
+            ]);
+
+        return redirect()->back()->with('message', 'Data pelanggan Berhasil di Update');
+    }
+
+    public function edit_dataPemasok(Request $request, akun $id)
+    {
+        Akun::updateOrCreate(
+            [
+                'id' => $id
+            ],
+            [
+                'nama_pemasok' => $request->nama_pemasok,
+                'alamat_pemasok' => $request->alamat_pemasok,
+                'telp_pemasok' => $request->telp_pemasok,
 
             ]
         );

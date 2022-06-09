@@ -13,9 +13,9 @@
                         <table id="perUser" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
-                                    <td>No Akun</td>
-                                    <td>Nama Akun</td>
-                                    <td>Aksi</td>
+                                    <th>No Akun</th>
+                                    <th>Nama Akun</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>

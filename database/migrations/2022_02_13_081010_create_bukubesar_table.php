@@ -18,8 +18,6 @@ class CreateBukubesarTable extends Migration
             $table->unsignedInteger('id_akun');
             $table->unsignedInteger('id_jurnal');
             $table->integer('saldo');
-            $table->integer('total_debit');
-            $table->integer('total_kredit');
             $table->timestamps();
 
             $table->foreign('id_akun')->references('id_akun')->on('akun')->onUpdate('cascade')->onDelete('cascade');

@@ -34,7 +34,7 @@
                                 </td>
                                 <td>
                                     @if (substr($item->no_akun,0,1) == 2 || substr($item->no_akun,0,1) == 3 || substr($item->no_akun,0,1) == 4)
-                                        {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('debit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('kredit')) }}
+                                        {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('kredit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('debit')) }}
                                     @else
                                         Rp. ----
                                     @endif
