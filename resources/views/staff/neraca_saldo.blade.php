@@ -20,16 +20,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i = 0; ?>
+                            <?php $totalDebit = 0 ?>
+                            <?php $totalKredit = 0 ?>
                             @foreach ($akun as $item)
-                                <?php $i++; ?>
-
                                 <tr>
                                     <td>{{ $item->no_akun }}</td>
                                     <td>{{ $item->nama_akun }}</td>
                                     <td>
                                         @if (substr($item->no_akun,0,1) == 1 || substr($item->no_akun,0,1) == 6)
                                             {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('debit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('kredit')) }}
+                                            <?php
+                                            $totalDebit += App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('debit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('kredit');
+                                            ?>
                                         @else
                                             Rp. -
                                         @endif
@@ -37,6 +39,9 @@
                                     <td>
                                         @if (substr($item->no_akun,0,1) == 2 || substr($item->no_akun,0,1) == 3 || substr($item->no_akun,0,1) == 4)
                                             {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('kredit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('debit')) }}
+                                            <?php
+                                            $totalKredit += App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('kredit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('debit');
+                                            ?>
                                         @else
                                             Rp. -
                                         @endif
@@ -46,15 +51,15 @@
                             @endforeach
                                 <tr>
                                     <th colspan="2" class="text-center">TOTAL</th>
-                                    <th class="text-center">Rp. 
-                                        Rp. {{ number_format($neracasaldo->sum('debit'), 0, ',', '.') }}
+                                    <th class="text-center">Rp.
+                                        {{ number_format($totalDebit) }}
                                     </th>
                                     <th class="text-center">Rp.
-                                        {{ number_format($akun->sum('kredit'), 0, ',', '.') }}
+                                        {{ number_format($totalKredit) }}
                                     </th>
                                 </tr>
 
-                              
+
                         </tbody>
                     </table>
                 </div>

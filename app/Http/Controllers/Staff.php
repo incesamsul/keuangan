@@ -35,7 +35,7 @@ class Staff extends Controller
         $data['pemasok'] = Pemasok::all();
         return view('staff.data_pemasok', $data);
     }
-    
+
     public function pemasokDelete($id)
     {
         $pemasok_delete = Pemasok::where('id_pemasok', $id);
@@ -131,7 +131,56 @@ class Staff extends Controller
 
     public function cetakLabaRugi()
     {
-        $html = view('staff.cetak_laba_rugi');
+        $data['neracasaldo'] = NeracaSaldo::all();
+        $data['akun'] = Akun::all();
+        $data['bukubesar'] = BukuBesar::all();
+        $html = view('staff.cetak_laba_rugi', $data);
+
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('Legal', 'potrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream("dompdf_out.pdf", array("Attachment" => false));
+        exit(0);
+    }
+
+    public function cetakLaporanModal()
+    {
+        $data['neracasaldo'] = NeracaSaldo::all();
+        $data['akun'] = Akun::all();
+        $data['bukubesar'] = BukuBesar::all();
+        $html = view('staff.cetak_laporan_modal', $data);
+
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('Legal', 'potrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream("dompdf_out.pdf", array("Attachment" => false));
+        exit(0);
+    }
+
+    public function cetakNeraca()
+    {
+        $data['neracasaldo'] = NeracaSaldo::all();
+        $data['akun'] = Akun::all();
+        $data['bukubesar'] = BukuBesar::all();
+        $html = view('staff.cetak_neraca', $data);
 
         // instantiate and use the dompdf class
         $dompdf = new Dompdf();

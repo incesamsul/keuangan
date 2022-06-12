@@ -70,7 +70,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:Administrator']], function () {
 });
 
 // STAFF ROUTE
-Route::group(['middleware' => ['auth', 'ceklevel:staff']], function () {
+Route::group(['middleware' => ['auth', 'ceklevel:staff,pimpinan']], function () {
     Route::group(['prefix' => 'staff'], function () {
 
         Route::get('/data_akun', [Staff::class, 'data_akun']);
@@ -129,6 +129,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:staff']], function () {
 
         // CETAK HERE
         Route::get('/cetak_laba_rugi', [Staff::class, 'cetakLabaRugi']);
+        Route::get('/cetak_laporan_modal', [Staff::class, 'cetakLaporanModal']);
+        Route::get('/cetak_neraca', [Staff::class, 'cetakNeraca']);
     });
 });
 
