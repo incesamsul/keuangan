@@ -372,10 +372,14 @@ class Staff extends Controller
     public function update(Request $request, $id)
     {
 
+        $nama_file = uniqid() . '.jpg';
         if ($request->has('file') != null) {
-            File::delete('data/bukti_transaksi/' . DB::table('jurnal')->where('id_jurnal', $id)->value('file'));
-            $nama_file = uniqid() . '.jpg';
+            // File::delete('data/bukti_transaksi/' . DB::table('jurnal')->where('id_jurnal', $id)->value('file'));
             $request->file('file')->move(public_path('data/bukti_transaksi/'), $nama_file);
+            Jurnal::where('id_jurnal', $id)
+                ->update([
+                    'file' => $nama_file,
+                ]);
         }
         Jurnal::where('id_jurnal', $id)
             ->update([
@@ -386,7 +390,6 @@ class Staff extends Controller
                 'id_pelanggan' => $request->pelanggan,
                 'debit' => $request->debit,
                 'kredit' => $request->kredit,
-                'file' => $nama_file,
             ]);
 
         return redirect()->back()->with('message', 'Data pelanggan Berhasil di Update');
