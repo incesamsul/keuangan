@@ -112,6 +112,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:staff,pimpinan']], function () 
         Route::post('/tambah_pemasok', [Staff::class, 'tambah_pemasok']);
         Route::post('/tambah_pelanggan', [Staff::class, 'tambah_pelanggan']);
         Route::post('/tambah_akun', [Staff::class, 'tambah_akun']);
+        Route::post('/tambah_transaksi', [Staff::class, 'tambah_transaksi']);
 
         // EDIT
         Route::post('/edit_akun', [Staff::class, 'edit_akun']);

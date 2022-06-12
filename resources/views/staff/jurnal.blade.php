@@ -41,8 +41,8 @@
                                         <td>{{ $row->akun->no_akun }}</td>
                                         <td>{{ 'Rp. ' . number_format($row->debit) }}</td>
                                         <td>{{ 'Rp. ' . number_format($row->kredit) }}</td>
-                                        <td>{{ $row->pelanggan }}</td>
-                                        <td>{{ $row->pemasok }}</td>
+                                        <td>{{ $row->pelanggan != null ? $row->pelanggan->nama_pelanggan : '---' }}</td>
+                                        <td>{{ $row->pemasok != null ? $row->pemasok->nama_pemasok : '---' }}</td>
                                         <td>
 
                                             <!-- Button trigger modal -->
