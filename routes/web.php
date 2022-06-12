@@ -107,10 +107,20 @@ Route::group(['middleware' => ['auth', 'ceklevel:staff,pimpinan']], function () 
         Route::get('/pelanggan/delete/{id}', [Staff::class, 'pelangganDelete'])->name('pelanggan.delete');
         Route::post('/pelanggan/update_dataPelanggan/{id}', [Staff::class, 'update_dataPelanggan'])->name('pelanggan.update_dataPelanggan');
 
+        // TAMBAH
         Route::post('/tambah_akun', [Staff::class, 'tambah_akun']);
         Route::post('/tambah_pemasok', [Staff::class, 'tambah_pemasok']);
         Route::post('/tambah_pelanggan', [Staff::class, 'tambah_pelanggan']);
-        Route::post('/tambah_transaksi', [Staff::class, 'tambah_transaksi']);
+        Route::post('/tambah_akun', [Staff::class, 'tambah_akun']);
+
+        // EDIT
+        Route::post('/edit_akun', [Staff::class, 'edit_akun']);
+        Route::post('/edit_pemasok', [Staff::class, 'edit_pemasok']);
+        Route::post('/edit_pelanggan', [Staff::class, 'edit_pelanggan']);
+        Route::post('/edit_transaksi', [Staff::class, 'edit_transaksi']);
+
+
+
 
         Route::get('jurnal/upload', 'Staff@form')->name('jurnal.form');
         Route::get('jurnal/index', 'Staff@index')->name('jurnal.index');

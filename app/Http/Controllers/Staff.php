@@ -233,6 +233,50 @@ class Staff extends Controller
         return redirect()->back()->with('message', 'Data pelanggan Berhasil di tambah');
     }
 
+    // EDIT FUNCTION
+    public function edit_akun(Request $request)
+    {
+        Akun::where([
+            ['id_akun', '=', $request->id]
+        ])->update([
+            'no_akun' => $request->no_akun,
+            'nama_akun' => $request->nama_akun,
+            // 'jenis_akun' => $request->jenis_akun,
+            // 'debit' => $request->debit,
+            // 'kredit' => $request->kredit,
+        ]);
+
+
+        return redirect()->back()->with('message', 'Data akun Berhasil di edit');
+    }
+
+    public function edit_pemasok(Request $request)
+    {
+        Pemasok::where([
+            ['id_pemasok', '=', $request->id]
+        ])->update([
+            'nama_pemasok' => $request->nama_pemasok,
+            'alamat_pemasok' => $request->alamat_pemasok,
+            'telp_pemasok' => $request->telp_pemasok,
+        ]);
+
+
+        return redirect()->back()->with('message', 'Data pemasok Berhasil di edit');
+    }
+
+    public function edit_pelanggan(Request $request)
+    {
+        Pelanggan::where([
+            ['id_pelanggan', '=', $request->id]
+        ])->update([
+            'nama_pelanggan' => $request->nama_pelanggan,
+            'alamat_pelanggan' => $request->alamat_pelanggan,
+            'telp_pelanggan' => $request->telp_pelanggan,
+        ]);
+
+        return redirect()->back()->with('message', 'Data pelanggan Berhasil di edit');
+    }
+
     public function tambah_transaksi(Request $request)
     {
         $nama_file = uniqid() . '.jpg';
@@ -384,21 +428,7 @@ class Staff extends Controller
         return redirect()->back()->with('message', 'Data pelanggan Berhasil di Update');
     }
 
-    public function edit_akun(Request $request, akun $id)
-    {
-        Akun::updateOrCreate(
-            [
-                'id' => $id
-            ],
-            [
-                'no_akun' => $request->no_akun,
-                'nama_akun' => $request->nama_akun,
 
-            ]
-        );
-
-        return response()->json(['success' => true]);
-    }
 
     //DATA PELANGGAN
     public function update_dataPelanggan(Request $request, $id)
