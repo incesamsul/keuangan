@@ -97,10 +97,10 @@
                                         <td class="bg-soft-primary">Jensi Kelamin</td>
                                         <td>{{ $user->jenis_kelamin }}</td>
                                     </tr>
-                                    <tr>
+                                    {{-- <tr>
                                         <td class="bg-soft-primary">Tempat Dan Tanggal Lahir</td>
                                         <td>{{ $user->tempat_lahir . "  " . $user->tanggal_lahir }}</td>
-                                    </tr>
+                                    </tr> --}}
                                     <tr>
                                         <td class="bg-soft-primary">Alamat</td>
                                         <td>{{ $user->alamat }}</td>

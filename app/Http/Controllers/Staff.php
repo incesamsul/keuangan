@@ -154,9 +154,9 @@ class Staff extends Controller
         Akun::create([
             'no_akun' => $request->no_akun,
             'nama_akun' => $request->nama_akun,
-            'jenis_akun' => $request->jenis_akun,
-            'debit' => $request->debit,
-            'kredit' => $request->kredit,
+            // 'jenis_akun' => $request->jenis_akun,
+            // 'debit' => $request->debit,
+            // 'kredit' => $request->kredit,
         ]);
 
         return redirect()->back()->with('message', 'Data akun Berhasil di tambah');
