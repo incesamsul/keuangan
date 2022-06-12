@@ -22,4 +22,14 @@ class Jurnal extends Model
     {
         return $this->belongsTo(Akun::class, 'id_akun', 'id_akun');
     }
+
+    public function pelanggan()
+    {
+        return $this->belongsTo(Pelanggan::class, 'id_pelanggan', 'id_pelanggan');
+    }
+
+    public function pemasok()
+    {
+        return $this->belongsTo(Pemasok::class, 'id_pemasok', 'id_pemasok');
+    }
 }

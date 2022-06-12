@@ -35,7 +35,7 @@ class Staff extends Controller
         $data['pemasok'] = Pemasok::all();
         return view('staff.data_pemasok', $data);
     }
-    
+
     public function pemasokDelete($id)
     {
         $pemasok_delete = Pemasok::where('id_pemasok', $id);
@@ -131,7 +131,56 @@ class Staff extends Controller
 
     public function cetakLabaRugi()
     {
-        $html = view('staff.cetak_laba_rugi');
+        $data['neracasaldo'] = NeracaSaldo::all();
+        $data['akun'] = Akun::all();
+        $data['bukubesar'] = BukuBesar::all();
+        $html = view('staff.cetak_laba_rugi', $data);
+
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('Legal', 'potrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream("dompdf_out.pdf", array("Attachment" => false));
+        exit(0);
+    }
+
+    public function cetakLaporanModal()
+    {
+        $data['neracasaldo'] = NeracaSaldo::all();
+        $data['akun'] = Akun::all();
+        $data['bukubesar'] = BukuBesar::all();
+        $html = view('staff.cetak_laporan_modal', $data);
+
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('Legal', 'potrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream("dompdf_out.pdf", array("Attachment" => false));
+        exit(0);
+    }
+
+    public function cetakNeraca()
+    {
+        $data['neracasaldo'] = NeracaSaldo::all();
+        $data['akun'] = Akun::all();
+        $data['bukubesar'] = BukuBesar::all();
+        $html = view('staff.cetak_neraca', $data);
 
         // instantiate and use the dompdf class
         $dompdf = new Dompdf();
@@ -182,6 +231,50 @@ class Staff extends Controller
         ]);
 
         return redirect()->back()->with('message', 'Data pelanggan Berhasil di tambah');
+    }
+
+    // EDIT FUNCTION
+    public function edit_akun(Request $request)
+    {
+        Akun::where([
+            ['id_akun', '=', $request->id]
+        ])->update([
+            'no_akun' => $request->no_akun,
+            'nama_akun' => $request->nama_akun,
+            // 'jenis_akun' => $request->jenis_akun,
+            // 'debit' => $request->debit,
+            // 'kredit' => $request->kredit,
+        ]);
+
+
+        return redirect()->back()->with('message', 'Data akun Berhasil di edit');
+    }
+
+    public function edit_pemasok(Request $request)
+    {
+        Pemasok::where([
+            ['id_pemasok', '=', $request->id]
+        ])->update([
+            'nama_pemasok' => $request->nama_pemasok,
+            'alamat_pemasok' => $request->alamat_pemasok,
+            'telp_pemasok' => $request->telp_pemasok,
+        ]);
+
+
+        return redirect()->back()->with('message', 'Data pemasok Berhasil di edit');
+    }
+
+    public function edit_pelanggan(Request $request)
+    {
+        Pelanggan::where([
+            ['id_pelanggan', '=', $request->id]
+        ])->update([
+            'nama_pelanggan' => $request->nama_pelanggan,
+            'alamat_pelanggan' => $request->alamat_pelanggan,
+            'telp_pelanggan' => $request->telp_pelanggan,
+        ]);
+
+        return redirect()->back()->with('message', 'Data pelanggan Berhasil di edit');
     }
 
     public function tambah_transaksi(Request $request)
@@ -279,10 +372,14 @@ class Staff extends Controller
     public function update(Request $request, $id)
     {
 
+        $nama_file = uniqid() . '.jpg';
         if ($request->has('file') != null) {
-            File::delete('data/bukti_transaksi/' . DB::table('jurnal')->where('id_jurnal', $id)->value('file'));
-            $nama_file = uniqid() . '.jpg';
+            // File::delete('data/bukti_transaksi/' . DB::table('jurnal')->where('id_jurnal', $id)->value('file'));
             $request->file('file')->move(public_path('data/bukti_transaksi/'), $nama_file);
+            Jurnal::where('id_jurnal', $id)
+                ->update([
+                    'file' => $nama_file,
+                ]);
         }
         Jurnal::where('id_jurnal', $id)
             ->update([
@@ -293,7 +390,6 @@ class Staff extends Controller
                 'id_pelanggan' => $request->pelanggan,
                 'debit' => $request->debit,
                 'kredit' => $request->kredit,
-                'file' => $nama_file,
             ]);
 
         return redirect()->back()->with('message', 'Data pelanggan Berhasil di Update');
@@ -335,21 +431,7 @@ class Staff extends Controller
         return redirect()->back()->with('message', 'Data pelanggan Berhasil di Update');
     }
 
-    public function edit_akun(Request $request, akun $id)
-    {
-        Akun::updateOrCreate(
-            [
-                'id' => $id
-            ],
-            [
-                'no_akun' => $request->no_akun,
-                'nama_akun' => $request->nama_akun,
 
-            ]
-        );
-
-        return response()->json(['success' => true]);
-    }
 
     //DATA PELANGGAN
     public function update_dataPelanggan(Request $request, $id)
