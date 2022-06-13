@@ -373,21 +373,32 @@ class Staff extends Controller
     {
 
         $nama_file = uniqid() . '.jpg';
-        if ($request->has('file') != null) {
-            // File::delete('data/bukti_transaksi/' . DB::table('jurnal')->where('id_jurnal', $id)->value('file'));
-            $request->file('file')->move(public_path('data/bukti_transaksi/'), $nama_file);
+        if ($request->has('bukti_transaksi') != null) {
+            // File::delete('data/bukti_transaksi/' . DB::table('jurnal')->where('id_jurnal', $id)->value('bukti_transaksi'));
+            $request->file('bukti_transaksi')->move(public_path('data/bukti_transaksi/'), $nama_file);
             Jurnal::where('id_jurnal', $id)
                 ->update([
                     'file' => $nama_file,
                 ]);
+        }
+
+        if ($request->id_pelanggan == null) {
+            $pemasok = $request->pemasok;
+        } else {
+            $pemasok = null;
+        }
+        if ($request->id_pelanggan == null) {
+            $pelanggan = $request->pelanggan;
+        } else {
+            $pelanggan = null;
         }
         Jurnal::where('id_jurnal', $id)
             ->update([
                 // 'no_bukti' => $request->no_bukti,
                 'tgl_transaksi' => $request->tgl_transaksi,
                 'id_akun' => $request->akun,
-                'id_pemasok' => $request->pemasok,
-                'id_pelanggan' => $request->pelanggan,
+                'id_pemasok' => $pemasok,
+                'id_pelanggan' => $pelanggan,
                 'debit' => $request->debit,
                 'kredit' => $request->kredit,
             ]);
