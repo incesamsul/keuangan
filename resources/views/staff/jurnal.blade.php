@@ -9,7 +9,7 @@
                     <div class="card-header d-flex justify-content-between">
                         <h4>Jurnal</h4>
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#formModal">
+                        <button type="button" class="btn btn-tambah btn-warning" data-toggle="modal" data-target="#formModal">
                             <i class="fas fa-plus"></i>
                         </button>
 
@@ -55,8 +55,7 @@
                                         <td>
                                             <a href="jurnal/delete/{{ $row->id_jurnal }}" class="btn btn-danger"><i
                                                     class="fas fa-trash"></i> Hapus</a>
-                                            <a data-toggle="modal" data-target="#modalUpdate-{{ $row->id_jurnal }}"
-                                                class="btn btn-primary"><i class="fas fa-pen"></i>Edit</a>
+                                            <a data-edit='@json($row)' data-toggle="modal" data-target="#formModal" class="btn btn-primary tombol-edit"><i class="fas fa-pen"></i>Edit</a>
                                             {{-- <a href="" id="editCompany" data-toggle="modal" data-target='#practice_modal' data-id="{{ $row->id }}" ><button class="btn btn-primary"><i class="fas fa-pen"></i>Edit</button></a> --}}
                                         </td>
                                     </tr>
@@ -128,7 +127,7 @@
                         </div>
                         <div class="form-group">
                             <label for="tgl_transaksi">Pilih Klien</label>
-                            <select name="pelanggan" id="klien" class="form-control">
+                            <select name="pelanggan" id="klien" class="form-control klien">
                                 <option>-- pilih klien --</option>
                                 <option>pemasok</option>
                                 <option>pelanggan</option>
@@ -210,143 +209,7 @@
         </div>
     </div>
 
-    <!-- Modal Update-->
-    @foreach ($jurnal as $item)
-        <div class="modal fade" id="modalView" data-backdrop="static" data-keyboard="false" tabindex="-1"
-            aria-labelledby="modalViewLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalViewLabel"> Bukti transaksi</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <img src="" id="previewUpload" class="img-thumbnail" style="width:100%">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Understood</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="modalUpdate-{{ $item->id_jurnal }}" tabindex="-1"
-            aria-labelledby="formModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="formModalLabel">Update Data</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="formData" action="{{ route('jurnal.update', $item->id_jurnal) }}" method="POST"
-                            enctype="multipart/form-data">
 
-                            {{-- enctype="multipart/form-data --}}
-                            @csrf
-                            {{-- <div class="form-group">
-              <label for="no_bukti">No. Bukti</label>
-              <input type="hidden" class="form-control" name="id" id="id">
-              <input type="text" class="form-control" name="no_bukti" id="no_bukti">
-          </div> --}}
-                            <div class="form-group">
-                                <label for="tgl_transaksi">Tanggal</label>
-                                <input type="date" class="form-control" name="tgl_transaksi"
-                                    value="{{ $item->tgl_transaksi }}" id="tgl_transaksi">
-                            </div>
-                            <div class="form-group">
-                                <label for="tgl_transaksi">Pilih Klien</label>
-                                <select name="pelanggan" id="klien" class="form-control">
-                                    <option>-- pilih klien --</option>
-                                    <option>pemasok</option>
-                                    <option>pelanggan</option>
-                                </select>
-                            </div>
-                            <div class="form-group" id="pelanggan_wrapper" class="hidden">
-                                <label for="tgl_transaksi">Pilih Pelanggan</label>
-                                <select name="pelanggan" id="pelanggan" class="form-control">
-                                    <option value="{{ $item->no_pelanggan }}">-- pilih pelanggan --</option>
-                                    @foreach ($pelanggan as $row)
-                                        <option data-keterangan="{{ $row->nama_pelanggan }}"
-                                            data-reff="{{ $row->no_pelanggan }}" value="{{ $row->id_pelanggan }}">
-                                            {{ $row->nama_pelanggan }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group" id="pemasok_wrapper" class="hidden">
-                                <label for="tgl_transaksi">Pilih pemasok</label>
-                                <select name="pemasok" id="pemasok" class="form-control">
-                                    <option value="">-- pilih pemasok --</option>
-                                    @foreach ($pemasok as $row)
-                                        <option data-keterangan="{{ $row->nama_pemasok }}"
-                                            data-reff="{{ $row->no_pemasok }}" value="{{ $row->id_pemasok }}">
-                                            {{ $row->nama_pemasok }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="tgl_transaksi">Pilih akun</label>
-                                <select name="akun" id="akun" class="form-control">
-                                    <option value="{{ $item->id_akun }}">{{ $item->akun->nama_akun }}</option>
-                                    @foreach ($akun as $row)
-                                        <option data-keterangan="{{ $row->nama_akun }}"
-                                            data-reff="{{ $row->no_akun }}" value="{{ $row->id_akun }}">
-                                            {{ $row->nama_akun }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="keterangan">Keterangan</label>
-                                <input readonly type="text" class="form-control" name="keterangan" id="keterangan"
-                                    value="{{ $item->akun->nama_akun }}">
-                            </div>
-                            <div class="form-group">
-                                <label for="reff">Reff</label>
-                                <input readonly type="text" class="form-control" name="reff" id="reff"
-                                    value="{{ $item->akun->no_akun }}">
-                            </div>
-                            <div class="form-group">
-                                <label for="debit">Debit</label>
-                                <input type="text" class="form-control" name="debit" id="debit"
-                                    value="{{ $item->debit }}">
-                            </div>
-                            <div class="form-group">
-                                <label for="kredit">Kredit</label>
-                                <input type="text" class="form-control" name="kredit" id="kredit"
-                                    value="{{ $item->kredit }}">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="file" class="form-label">Bukti Transaksi</label>
-                                <input class="form-control" type="file" id="file" name="file">
-                            </div>
-                            {{-- <div class="form-group">
-            <label for="bukti">Bukti Transaksi</label>
-            <input type="file" class="form-control" name="bukti" id="bukti">
-            <label for="bukti" class="form-control">Upload</label>
-          </div> --}}
-                            {{-- <div class ="form-group" >
-
-            <form action="prosesupload.php" method="post" enctype="multipart/form-data">
-              <p>Upload File : <input type="file" name="file"></p>
-              <input type="file" name="upload" value="upload">
-            </form>
-          </div> --}}
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-warning" id="modalBtn"
-                            href="{{ route('jurnal.form') }}">Tambah</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endforeach
 @endsection
 @section('script')
     <script>
@@ -355,8 +218,34 @@
             $('#previewUpload').attr('src', uploadUrl);
         })
 
+        $('.btn-tambah').on('click',function(){
+            $('#formData').attr('action','/staff/tambah_transaksi');
+        })
 
-        $('#klien').on('change', function() {
+        $(document).on('click','.tombol-edit',function(){
+            let dataEdit = $(this).data('edit');
+            console.log(dataEdit);
+            if(dataEdit.id_pelanggan == null){
+                $('#klien').val('pemasok').change();
+            }
+            if(dataEdit.id_pemasok == null){
+                console.log('pelanggan')
+                $('#klien').val('pelanggan').change();
+            }
+            $('#pelanggan').val(dataEdit.id_pelanggan)
+            $('#pemasok').val(dataEdit.id_pemasok)
+            $('#tgl_transaksi').val(dataEdit.tgl_transaksi)
+            $('#akun').val(dataEdit.id_akun)
+            $('#keterangan').val(dataEdit.akun.no_akun)
+            $('#reff').val(dataEdit.akun.nama_akun)
+            $('#debit').val(dataEdit.debit)
+            $('#kredit').val(dataEdit.kredit)
+            $('#formData').attr('action','/staff/jurnal/update/' + dataEdit.id_jurnal);
+        })
+
+
+
+        $('.klien').on('change', function() {
             let klien = $(this).val();
             if (klien == 'pemasok') {
                 $('#pemasok_wrapper').css('visibility', 'visible');
@@ -393,62 +282,64 @@
         <script>
             $(document).ready(function() {
 
+
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
 
-                $('body').on('click', '#submit', function(event) {
-                    event.preventDefault()
-                    var id = $("#jurnal_id").val();
-                    var no_bukti = $('#no_bukti').val();
-                    var tgl_transaksi = $("#tgl_transaksi").val();
-                    var nama_akun = $("#nama_akun").val();
-                    var no_akun = $("#no_akun").val();
-                    var debit = $("#debit").val();
-                    var kredit = $("#kredit").val();
+                // $('body').on('click', '#submit', function(event) {
+                //     event.preventDefault()
+                //     var id = $("#jurnal_id").val();
+                //     var no_bukti = $('#no_bukti').val();
+                //     var tgl_transaksi = $("#tgl_transaksi").val();
+                //     var nama_akun = $("#nama_akun").val();
+                //     var no_akun = $("#no_akun").val();
+                //     var debit = $("#debit").val();
+                //     var kredit = $("#kredit").val();
 
-                    $.ajax({
-                        url: 'jurnal/' + id,
-                        type: "POST",
-                        data: {
-                            id: id,
-                            no_bukti: no_bukti
-                            tgl_transaksi: tgl_transaksi,
-                            nama_akun: nama_akun,
-                            no_akun: no_akun,
-                            debit: debit,
-                            kredit: kredit,
-                        },
-                        dataType: 'json',
-                        success: function(data) {
+                //     $.ajax({
+                //         url: 'jurnal/' + id,
+                //         type: "POST",
+                //         data: {
+                //             id: id,
+                //             no_bukti: no_bukti
+                //             tgl_transaksi: tgl_transaksi,
+                //             nama_akun: nama_akun,
+                //             no_akun: no_akun,
+                //             debit: debit,
+                //             kredit: kredit,
+                //         },
+                //         dataType: 'json',
+                //         success: function(data) {
 
-                            $('#companydata').trigger("reset");
-                            $('#practice_modal').modal('hide');
-                            window.location.reload(true);
-                        }
-                    });
-                });
+                //             $('#companydata').trigger("reset");
+                //             $('#practice_modal').modal('hide');
+                //             window.location.reload(true);
+                //         }
+                //     });
+                // });
 
-                $('body').on('click', '#editCompany', function(event) {
+                // $('body').on('click', '#editCompany', function(event) {
 
-                    event.preventDefault();
-                    var id = $(this).data('id');
-                    console.log(id)
-                    $.get('jurnal/' + id + '/edit', function(data) {
-                        $('#userCrudModal').html("Edit category");
-                        $('#submit').val("Edit category");
-                        $('#practice_modal').modal('show');
-                        $('#jurnal_id').val(data.data.id);
-                        $('#no_bukti').val(data.data.no_bukti);
-                        $('#tgl_transaksi').val(data.data.tgl_transaksi);
-                        $('#nama_akun').val(data.data.nama_akun);
-                        $('#no_akun').val(data.data.no_akun);
-                        $('#debit').val(data.data.debit);
-                        $('#kredit').val(data.data.kredit);
-                    })
-                });
+                //     event.preventDefault();
+                //     var id = $(this).data('id');
+                //     console.log(id)
+                //     $.get('jurnal/' + id + '/edit', function(data) {
+
+                //         $('#userCrudModal').html("Edit category");
+                //         $('#submit').val("Edit category");
+                //         $('#practice_modal').modal('show');
+                //         $('#jurnal_id').val(data.data.id);
+                //         $('#no_bukti').val(data.data.no_bukti);
+                //         $('#tgl_transaksi').val(data.data.tgl_transaksi);
+                //         $('#nama_akun').val(data.data.nama_akun);
+                //         $('#no_akun').val(data.data.no_akun);
+                //         $('#debit').val(data.data.debit);
+                //         $('#kredit').val(data.data.kredit);
+                //     })
+                // });
 
             });
 
