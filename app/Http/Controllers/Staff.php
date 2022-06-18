@@ -56,9 +56,13 @@ class Staff extends Controller
         return redirect()->back();
     }
 
-    public function jurnal()
+    public function jurnal($tahun = null)
     {
-        $data['jurnal'] = Jurnal::all();
+        if (!$tahun) {
+            $tahun = Date('Y');
+        }
+        $data['tahun'] = $tahun;
+        $data['jurnal'] = Jurnal::whereYear('created_at', $tahun)->get();
         // $data['jurnal'] = Jurnal::groupBy('no_bukti')->get();
         $data['akun'] = Akun::all();
         $data['pelanggan'] = Pelanggan::all();

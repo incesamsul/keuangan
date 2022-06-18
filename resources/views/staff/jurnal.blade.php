@@ -7,7 +7,11 @@
             <div class="col-lg-12">
                 <div class="card ">
                     <div class="card-header d-flex justify-content-between">
-                        <h4>Jurnal</h4>
+                        <div class="title-and-filter d-flex flex-row">
+                            <h4>Jurnal</h4>
+                            <input id="input-filter-tahun" type="number" min="1900" max="2099" step="1" value="{{ $tahun }}" class="form-control"/>
+                            <button id="filter-tahun" class="btn btn-warning mx-2"><i class="fas fa-sync"></i></button>
+                        </div>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-tambah btn-warning" data-toggle="modal" data-target="#formModal">
                             <i class="fas fa-plus"></i>
@@ -213,6 +217,11 @@
 @endsection
 @section('script')
     <script>
+
+        $('#filter-tahun').on('click',function(){
+            document.location.href = '/staff/jurnal/' + $('#input-filter-tahun').val();
+        })
+
         $('.btn-preview-upload').on('click', function() {
             let uploadUrl = $(this).data('upload');
             $('#previewUpload').attr('src', uploadUrl);
@@ -236,8 +245,8 @@
             $('#pemasok').val(dataEdit.id_pemasok)
             $('#tgl_transaksi').val(dataEdit.tgl_transaksi)
             $('#akun').val(dataEdit.id_akun)
-            $('#keterangan').val(dataEdit.akun.no_akun)
-            $('#reff').val(dataEdit.akun.nama_akun)
+            $('#keterangan').val(dataEdit.akun.nama_akun)
+            $('#reff').val(dataEdit.akun.no_akun)
             $('#debit').val(dataEdit.debit)
             $('#kredit').val(dataEdit.kredit)
             $('#formData').attr('action','/staff/jurnal/update/' + dataEdit.id_jurnal);
