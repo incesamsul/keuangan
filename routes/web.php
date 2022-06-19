@@ -77,6 +77,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:staff,pimpinan']], function () 
         Route::get('/data_pemasok', [Staff::class, 'data_pemasok']);
         Route::get('/data_pelanggan', [Staff::class, 'data_pelanggan']);
         Route::get('/jurnal', [Staff::class, 'jurnal']);
+        Route::get('/jurnal/{tahun}', [Staff::class, 'jurnal']);
         Route::get('/buku_besar', [Staff::class, 'buku_besar']);
         Route::get('/neraca_saldo', [Staff::class, 'neraca_saldo']);
         Route::get('/laba_rugi', [Staff::class, 'laba_rugi']);
