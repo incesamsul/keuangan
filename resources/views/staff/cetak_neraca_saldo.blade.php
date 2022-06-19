@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Laporan laba rugi</title>
+    <title>Neraca Saldo</title>
 </head>
 <style>
 
@@ -36,7 +36,7 @@
     }
 </style>
 <body>
-    <h1 class="text-center m-0">Laporan <span class="text-main">Laba Rugi</span></h1>
+    <h1 class="text-center m-0">Neraca <span class="text-main">Saldo</span></h1>
     <h3 class="text-center">CV TRITAMA INTI PERSADA</h3>
     <p class="text-center m-0">Dari 1 april 2022 sampai 3 april 2022</p>
 
@@ -51,10 +51,7 @@
         <tbody>
             <?php $totalDebit = 0 ?>
             <?php $totalKredit = 0 ?>
-            <?php $laba = 0?>
-            <?php $rugi = 0?>
             @foreach ($akun as $item)
-            @if (substr($item->no_akun,0,1) == 4 || substr($item->no_akun,0,1) == 6)
             <tr>
                 <td>{{ $item->nama_akun }}</td>
                 <td>
@@ -79,7 +76,6 @@
                 </td>
 
             </tr>
-            @endif
             @endforeach
             <tr>
                 <th class="text-center">TOTAL</th>
@@ -88,42 +84,6 @@
                 </th>
                 <th class="text-center">Rp.
                     {{ number_format($totalKredit) }}
-                </th>
-            </tr>
-            <tr>
-                <th  class="text-center">
-                    @if (($totalKredit - $totalDebit) < 0)
-                        RUGI
-                    @else
-                        LABA
-                    @endif
-                </th>
-                <th class="text-center">
-                    {{-- field untung / debit --}}
-                    @if (($totalKredit - $totalDebit) > 0)
-                        Rp. {{ number_format($totalKredit - $totalDebit) }}
-                        <?php $laba = $totalKredit - $totalDebit;?>
-                    @else
-
-                   @endif
-                </th>
-                <th class="text-center">
-                    {{-- field kredit / rugi --}}
-                    @if (($totalKredit - $totalDebit) < 0)
-                        Rp. {{ number_format($totalDebit - $totalKredit) }}
-                        <?php $rugi = $totalDebit - $totalKredit?>
-                    @else
-
-                    @endif
-                </th>
-            </tr>
-            <tr>
-                <th class="text-center"></th>
-                <th class="text-center">Rp.
-                    {{ number_format($totalDebit + $laba) }}
-                </th>
-                <th class="text-center">Rp.
-                    {{ number_format($totalKredit + $rugi) }}
                 </th>
             </tr>
         </tbody>

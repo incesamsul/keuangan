@@ -128,6 +128,28 @@ class Staff extends Controller
         return view('staff.laporan_neraca', $data);
     }
 
+    public function cetakNeracaSaldo()
+    {
+        $data['neracasaldo'] = NeracaSaldo::all();
+        $data['akun'] = Akun::all();
+        $data['bukubesar'] = BukuBesar::all();
+        $html = view('staff.cetak_neraca_saldo', $data);
+
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('Legal', 'potrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream("neraca_saldo.pdf", array("Attachment" => false));
+        exit(0);
+    }
 
     public function cetakLabaRugi()
     {
@@ -148,7 +170,7 @@ class Staff extends Controller
         $dompdf->render();
 
         // Output the generated PDF to Browser
-        $dompdf->stream("dompdf_out.pdf", array("Attachment" => false));
+        $dompdf->stream("laporan_laba_rugi.pdf", array("Attachment" => false));
         exit(0);
     }
 
@@ -171,7 +193,7 @@ class Staff extends Controller
         $dompdf->render();
 
         // Output the generated PDF to Browser
-        $dompdf->stream("dompdf_out.pdf", array("Attachment" => false));
+        $dompdf->stream("laporan_modal.pdf", array("Attachment" => false));
         exit(0);
     }
 
@@ -194,7 +216,7 @@ class Staff extends Controller
         $dompdf->render();
 
         // Output the generated PDF to Browser
-        $dompdf->stream("dompdf_out.pdf", array("Attachment" => false));
+        $dompdf->stream("laporan_neraca.pdf", array("Attachment" => false));
         exit(0);
     }
 

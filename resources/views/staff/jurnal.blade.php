@@ -41,8 +41,8 @@
                                         <td>{{ $row->akun->no_akun }}</td>
                                         <td>{{ 'Rp. ' . number_format($row->debit) }}</td>
                                         <td>{{ 'Rp. ' . number_format($row->kredit) }}</td>
-                                        <td>{{ $row->pelanggan != null ? $row->pelanggan->nama_pelanggan : '---' }}</td>
-                                        <td>{{ $row->pemasok != null ? $row->pemasok->nama_pemasok : '---' }}</td>
+                                        <td>{{ $row->pelanggan != null ? $row->pelanggan->nama_pelanggan : '-' }}</td>
+                                        <td>{{ $row->pemasok != null ? $row->pemasok->nama_pemasok : '-' }}</td>
                                         <td>
 
                                             <!-- Button trigger modal -->
@@ -62,10 +62,11 @@
                                 @endforeach
                                 <tr>
                                     <th colspan="3" class="text-center">TOTAL</th>
-                                    <th class="text-center">Rp. {{ number_format($jurnal->sum('debit'), 0, ',', '.') }}
+                                    <th class="text-center">Rp. 
+                                        {{ number_format($jurnal->sum('debit')) }}
                                     </th>
                                     <th class="text-center">Rp.
-                                        {{ number_format($jurnal->sum('kredit'), 0, ',', '.') }}
+                                        {{ number_format($jurnal->sum('kredit')) }}
                                     </th>
                                 </tr>
 
@@ -236,8 +237,8 @@
             $('#pemasok').val(dataEdit.id_pemasok)
             $('#tgl_transaksi').val(dataEdit.tgl_transaksi)
             $('#akun').val(dataEdit.id_akun)
-            $('#keterangan').val(dataEdit.akun.no_akun)
-            $('#reff').val(dataEdit.akun.nama_akun)
+            $('#keterangan').val(dataEdit.akun.nama_akun)
+            $('#reff').val(dataEdit.akun.no_akun)
             $('#debit').val(dataEdit.debit)
             $('#kredit').val(dataEdit.kredit)
             $('#formData').attr('action','/staff/jurnal/update/' + dataEdit.id_jurnal);

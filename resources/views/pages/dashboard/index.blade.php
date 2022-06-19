@@ -6,21 +6,6 @@
         <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="card card-statistic-2">
                 <div class="card-icon shadow-warning bg-warning">
-                    <i class="fas fa-chart-bar"></i>
-                </div>
-                <div class="card-wrap">
-                    <div class="card-header">
-                        <h4>Laba/Rugi</h4>
-                    </div>
-                    <div class="card-body">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
-            <div class="card card-statistic-2">
-                <div class="card-icon shadow-warning bg-warning">
                     <i class="fas fa-wallet"></i>
                 </div>
                 <div class="card-wrap">
@@ -30,6 +15,38 @@
                     <div class="card-body">
                         
                         {{-- <p class="text-small mt-3">{{ date('l, d M Y H:i:s') }}</p> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card card-statistic-2">
+                <div class="card-icon shadow-warning bg-warning">
+                    <i class="fas fa-receipt"></i>
+                </div>
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Piutang</h4>
+                    </div>
+                    <div class="card-body">
+                        
+                        {{-- <p class="text-small mt-3">{{ date('H:i:s') }}</p> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card card-statistic-2">
+                <div class="card-icon shadow-warning bg-warning">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Utang</h4>
+                    </div>
+                    <div class="card-body">
+                        
+                        {{-- <p class="text-small mt-3">{{ date('H:i:s') }}</p> --}}
                     </div>
                 </div>
             </div>
@@ -53,11 +70,11 @@
         <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="card card-statistic-2">
                 <div class="card-icon shadow-warning bg-warning">
-                    <i class="fas fa-credit-card"></i>
+                    <i class="fas fa-chart-line"></i>
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Utang</h4>
+                        <h4>Pendapatan</h4>
                     </div>
                     <div class="card-body">
                         
@@ -72,7 +89,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Hi Welcome guyysss <i class="far fa-laugh-wink"></i> </h4>
+                    <h4>Hi Welcome</h4>
                 </div>
                 <div class="card-body">
                     <h5>CV Tritama Inti Persada</h5>

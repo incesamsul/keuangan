@@ -8,6 +8,9 @@
             <div class="card ">
                 <div class="card-header d-flex justify-content-between">
                     <h4>Neraca Saldo</h4>
+                    <a href="{{ URL::to('/staff/cetak_neraca_saldo') }}" target="_blank" class="btn btn-warning mt-3">
+                        <i class="fas fa-print"></i> Cetak
+                    </a>
                 </div>
                 <div class="card-body">
                     <table id="perUser" class="table table-striped table-bordered" style="width:100%">
@@ -58,8 +61,6 @@
                                         {{ number_format($totalKredit) }}
                                     </th>
                                 </tr>
-
-
                         </tbody>
                     </table>
                 </div>

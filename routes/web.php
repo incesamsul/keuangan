@@ -139,6 +139,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:staff,pimpinan']], function () 
         // Route::post('akun/upload_akun', 'Staff@upload_akun')->name('akun.upload_akun');
 
         // CETAK HERE
+        Route::get('/cetak_neraca_saldo', [Staff::class, 'cetakNeracaSaldo']);
         Route::get('/cetak_laba_rugi', [Staff::class, 'cetakLabaRugi']);
         Route::get('/cetak_laporan_modal', [Staff::class, 'cetakLaporanModal']);
         Route::get('/cetak_neraca', [Staff::class, 'cetakNeraca']);
@@ -155,5 +156,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:pimpinan']], function () {
 
         //CETAK HERE
         Route::get('/cetak_laba_rugi', [Pimpinan::class, 'cetakLabaRugi']);
+        Route::get('/cetak_laporan_modal', [Pimpinan::class, 'cetakLaporanModal']);
+        Route::get('/cetak_neraca', [Pimpinan::class, 'cetakNeraca']);
     });
 });

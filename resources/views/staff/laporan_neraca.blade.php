@@ -5,7 +5,8 @@
 
 
     <?php
-        $labaRugi = 0;
+        $laba = 0;
+        $rugi = 0;
     ?>
     <div class="row" hidden>
         <div class="col-lg-12">
@@ -20,10 +21,10 @@
                     <table id="perUser" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <td>No Akun</td>
-                                <td>Nama Akun</td>
-                                <td>Debit</td>
-                                <td>Kredit</td>
+                                <th>No Akun</th>
+                                <th>Nama Akun</th>
+                                <th>Debit</th>
+                                <th>Kredit</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -41,7 +42,7 @@
                                         $totalDebit += App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('debit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('kredit');
                                         ?>
                                     @else
-                                        Rp. ----
+                                        Rp. -
                                     @endif
                                 </td>
                                 <td>
@@ -51,7 +52,7 @@
                                             $totalKredit += App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('kredit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('debit');
                                          ?>
                                     @else
-                                        Rp. ----
+                                        Rp. -
                                     @endif
                                 </td>
 
@@ -80,7 +81,7 @@
                                     @if (($totalKredit - $totalDebit) > 0)
                                         {{ $totalKredit - $totalDebit }}
                                         <?php
-                                        $labaRugi = $totalKredit - $totalDebit;
+                                        $laba = $totalKredit - $totalDebit;
                                         ?>
                                     @else
 
@@ -89,9 +90,9 @@
                                 <th class="text-center">Rp.
                                     {{-- field kredit / rugi --}}
                                     @if (($totalKredit - $totalDebit) < 0)
-                                        {{ $totalKredit - $totalDebit }}
+                                        {{ $totalDebit - $totalKredit }}
                                         <?php
-                                        $labaRugi = $totalKredit - $totalDebit;
+                                        $rugi = $totalDebit - $totalKredit;
                                         ?>
                                     @else
 
@@ -119,10 +120,10 @@
                     <table id="perUser" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <td>No Akun</td>
-                                <td>Nama Akun</td>
-                                <td>Debit</td>
-                                <td>Kredit</td>
+                                <th>No Akun</th>
+                                <th>Nama Akun</th>
+                                <th>Debit</th>
+                                <th>Kredit</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -135,31 +136,34 @@
                                 <td>{{ $item->nama_akun }}</td>
                                 <td>
                                     @if ($item->nama_akun == "Laba Tahun Berjalan")
-                                        @if ($labaRugi < 0)
-                                            Rp. {{ number_format($labaRugi) }}
+                                        @if ($rugi > 0)
+                                            Rp. {{ number_format($rugi) }}
                                             <?php
-                                            $totalDebit += $labaRugi;
+                                            $totalDebit += $rugi;
                                             ?>
                                         @else
-                                            Rp. 0
+                                            Rp. -
                                         @endif
                                     @else
                                     @if (substr($item->no_akun,0,1) == 1 || substr($item->no_akun,0,1) == 6)
                                         {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('debit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('kredit')) }}
                                         <?php
-                                        $totalDebit += App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('debit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('kredit');
+                                        $totalDebit += App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('debit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('Kredit');
                                         ?>
                                     @else
-                                        Rp. ----
+                                        Rp. -
                                     @endif
                                     @endif
                                 </td>
                                 <td>
                                     @if ($item->nama_akun == "Laba Tahun Berjalan")
-                                        @if ($labaRugi > 0)
-                                            untung
+                                        @if ($laba > 0)
+                                        Rp. {{ number_format($laba) }}
+                                        <?php
+                                        $totalKredit += $laba;
+                                        ?>
                                         @else
-                                            Rp. 0
+                                            Rp. -
                                         @endif
                                     @else
                                     @if (substr($item->no_akun,0,1) == 2 || substr($item->no_akun,0,1) == 3 || substr($item->no_akun,0,1) == 4)
@@ -168,7 +172,7 @@
                                             $totalKredit += App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('kredit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('debit');
                                          ?>
                                     @else
-                                        Rp. ----
+                                        Rp. -
                                     @endif
                                     @endif
                                 </td>
@@ -178,7 +182,7 @@
                             @endforeach
                             <tr>
                                 <th colspan="2" class="text-center">MODAL AKHIR</th>
-                                <th class="text-center">Rp. 0
+                                <th class="text-center">Rp. -
                                     {{-- {{ number_format($totalDebit) }} --}}
                                 </th>
                                 <th class="text-center">Rp.
@@ -209,10 +213,10 @@
                     <table id="perUser" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <td>No Akun</td>
-                                <td>Nama Akun</td>
-                                <td>Debit</td>
-                                <td>Kredit</td>
+                                <th>No Akun</th>
+                                <th>Nama Akun</th>
+                                <th>Debit</th>
+                                <th>Kredit</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -230,7 +234,7 @@
                                             $totalDebit += App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('debit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('kredit');
                                             ?>
                                     @else
-                                        Rp. ----
+                                        Rp. -
                                     @endif
                                 </td>
                                 <td>
@@ -246,7 +250,7 @@
                                             $totalKredit += App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('kredit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('debit');
                                             ?>
                                     @else
-                                        Rp. ----
+                                        Rp. -
                                     @endif
                                     @endif
                                 </td>
@@ -282,10 +286,10 @@
                     <table id="perUser" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <td>No Akun</td>
-                                <td>Nama Akun</td>
-                                <td>Debit</td>
-                                <td>Kredit</td>
+                                <th>No Akun</th>
+                                <th>Nama Akun</th>
+                                <th>Debit</th>
+                                <th>Kredit</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -303,7 +307,7 @@
                                             $totalDebit += App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('debit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('kredit');
                                             ?>
                                     @else
-                                        Rp. ----
+                                        Rp. -
                                     @endif
                                 </td>
                                 <td>
@@ -319,7 +323,7 @@
                                             $totalKredit += App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('kredit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('debit');
                                             ?>
                                     @else
-                                        Rp. ----
+                                        Rp. -
                                     @endif
                                     @endif
                                 </td>
