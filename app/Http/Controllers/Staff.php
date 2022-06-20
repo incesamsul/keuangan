@@ -61,8 +61,7 @@ class Staff extends Controller
         if (!$tahun) {
             $tahun = Date('Y');
         }
-        $data['tahun'] = $tahun;
-        $data['jurnal'] = Jurnal::whereYear('created_at', $tahun)->get();
+        $data['jurnal'] = Jurnal::where('id_periode',getPeriodeAktif()->id_periode)->get();
         // $data['jurnal'] = Jurnal::groupBy('no_bukti')->get();
         $data['akun'] = Akun::all();
         $data['pelanggan'] = Pelanggan::all();
@@ -80,14 +79,14 @@ class Staff extends Controller
     public function buku_besar()
     {
         // $data['bukubesar'] = BukuBesar::all();
-        $data['buku_besar'] = Jurnal::all();
-        $data['bukubesar'] = DB::table('jurnal')
-            ->join('akun', 'akun.id_akun', '=', 'jurnal.id_akun')
-            ->groupBy('nama_akun')
-            ->get();
+        // $data['buku_besar'] = Jurnal::all();
+        // $data['bukubesar'] = DB::table('jurnal')
+        //     ->join('akun', 'akun.id_akun', '=', 'jurnal.id_akun')
+        //     ->groupBy('nama_akun')
+        //     ->get();
 
         $data['akun'] = Akun::all();
-        $data['jurnal'] = Jurnal::all();
+        // $data['jurnal'] = Jurnal::all();
         return view('staff.buku_besar', $data);
         // $data['bukubesar'] = Jurnal::all();
         // $data['bukubesar'] = DB::table('jurnal')
@@ -313,6 +312,7 @@ class Staff extends Controller
             'id_akun' => $request->akun,
             'id_pemasok' => $request->pemasok,
             'id_pelanggan' => $request->pelanggan,
+            'id_periode' => getPeriodeAktif()->id_periode,
             'debit' => $request->debit,
             'kredit' => $request->kredit,
             'file' => $nama_file,

@@ -67,7 +67,7 @@
                                 @endforeach
                                 <tr>
                                     <th colspan="3" class="text-center">TOTAL</th>
-                                    <th class="text-center">Rp. 
+                                    <th class="text-center">Rp.
                                         {{ number_format($jurnal->sum('debit')) }}
                                     </th>
                                     <th class="text-center">Rp.

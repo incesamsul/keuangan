@@ -13,7 +13,7 @@
                         <h4>Kas</h4>
                     </div>
                     <div class="card-body">
-                        
+
                         {{-- <p class="text-small mt-3">{{ date('l, d M Y H:i:s') }}</p> --}}
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                         <h4>Piutang</h4>
                     </div>
                     <div class="card-body">
-                        
+
                         {{-- <p class="text-small mt-3">{{ date('H:i:s') }}</p> --}}
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                         <h4>Utang</h4>
                     </div>
                     <div class="card-body">
-                        
+
                         {{-- <p class="text-small mt-3">{{ date('H:i:s') }}</p> --}}
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                         <h4>Modal</h4>
                     </div>
                     <div class="card-body">
-                        
+
                         {{-- <p class="text-small mt-3">{{ date('l, d M Y H:i:s') }}</p> --}}
                     </div>
                 </div>
@@ -77,7 +77,7 @@
                         <h4>Pendapatan</h4>
                     </div>
                     <div class="card-body">
-                        
+
                         {{-- <p class="text-small mt-3">{{ date('H:i:s') }}</p> --}}
                     </div>
                 </div>
@@ -105,6 +105,23 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <h4>Set periode aktif</h4>
+                    <button class="btn btn-warning" id="simpan-periode">Simpan</button>
+                </div>
+                <div class="card-body">
+                    <select name="periode" id="periode" class="form-control">
+                        @foreach ($periode as $row)
+                            <option {{ $row->is_active == '1' ? 'selected' : '' }} value="{{ $row->id_periode }}">{{ $row->periode }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
 
     </div>
 </section>
@@ -112,6 +129,31 @@
 
 @section('script')
 <script>
+
+    $('#simpan-periode').on('click',function(){
+        let periode = $('#periode').val();
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+            , url: '/set_periode_aktif'
+            , method: 'post'
+            , dataType: 'json'
+            , data: {
+                periode: periode
+            }
+            , success: function(data) {
+                if (data == 1) {
+                    Swal.fire('Berhasil', 'periode berhasil di set', 'success').then((result) => {
+                        location.reload();
+                    });
+                }
+            }
+            , error: function(err) {
+                console.log(err);
+            }
+        })
+    })
     $('#liDashboard').addClass('active');
 
 </script>

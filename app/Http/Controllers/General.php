@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Periode;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Filesystem\Filesystem;
@@ -20,7 +20,8 @@ class General extends Controller
 
     public function dashboard()
     {
-        return view('pages.dashboard.index');
+        $data['periode'] = Periode::all();
+        return view('pages.dashboard.index',$data);
     }
 
     public function profile()
@@ -64,4 +65,11 @@ class General extends Controller
             ->update(['foto' => $fileName]);
         return redirect()->back();
     }
+
+    public function setPeriodeAktif(Request $request){
+        Periode::where('is_active','1')->update(['is_active' => '0']);
+        Periode::where('id_periode',$request->periode)->update(['is_active'=> '1']);
+        return 1;
+    }
+
 }
