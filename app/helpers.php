@@ -3,6 +3,7 @@
 use App\Models\FavoritModel;
 use App\Models\KategoriModel;
 use App\Models\LogAktivitasModel;
+use App\Models\Periode;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use phpDocumentor\Reflection\Types\Null_;
@@ -22,6 +23,11 @@ use function PHPUnit\Framework\isNull;
 // $this->validate($request, [
 //     'file' => 'required|file|max:2000', // max 2MB
 // ]);
+
+function getPeriodeAktif(){
+    return Periode::where('is_active','1')->first();
+}
+
 
 function has_next($array) {
     if (is_array($array)) {

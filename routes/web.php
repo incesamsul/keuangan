@@ -48,6 +48,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:Administrator,staff,pimpinan']]
 
     Route::post('/ubah_foto_profile', [General::class, 'ubahFotoProfile']);
     Route::post('/ubah_role', [General::class, 'ubahRole']);
+    Route::post('/set_periode_aktif', [General::class, 'setPeriodeAktif']);
 });
 
 // ADMIN ROUTE

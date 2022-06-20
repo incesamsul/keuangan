@@ -7,11 +7,11 @@
             <div class="col-lg-12">
                 <div class="card ">
                     <div class="card-header d-flex justify-content-between">
-                        <div class="title-and-filter d-flex flex-row">
-                            <h4>Jurnal</h4>
+                        <h4>Jurnal</h4>
+                        {{-- <div class="title-and-filter d-flex flex-row">
                             <input id="input-filter-tahun" type="number" min="1900" max="2099" step="1" value="{{ $tahun }}" class="form-control"/>
                             <button id="filter-tahun" class="btn btn-warning mx-2"><i class="fas fa-sync"></i></button>
-                        </div>
+                        </div> --}}
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-tambah btn-warning" data-toggle="modal" data-target="#formModal">
                             <i class="fas fa-plus"></i>
@@ -66,7 +66,7 @@
                                 @endforeach
                                 <tr>
                                     <th colspan="3" class="text-center">TOTAL</th>
-                                    <th class="text-center">Rp. 
+                                    <th class="text-center">Rp.
                                         {{ number_format($jurnal->sum('debit')) }}
                                     </th>
                                     <th class="text-center">Rp.

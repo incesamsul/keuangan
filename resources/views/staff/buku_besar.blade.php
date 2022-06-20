@@ -75,7 +75,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (App\Models\Jurnal::all()->where('id_akun', $item->id_akun) as $ite)
+                                @foreach (App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->where('id_periode',getPeriodeAktif()->id_periode) as $ite)
                                     <tr>
                                         <td>{{ $ite->tgl_transaksi }}</td>
                                         <td>{{ $ite->akun->nama_akun }}</td>
@@ -94,14 +94,14 @@
                                     <th>total</th>
                                     <th>
                                         {{-- sum debit jurnal --}}
-                                        {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('debit')) }}
+                                        {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->where('id_periode',getPeriodeAktif()->id_periode)->sum('debit')) }}
                                     </th>
                                     <th>
                                         {{-- sum kredit jurnal --}}
-                                        {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('kredit')) }}
+                                        {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->where('id_periode',getPeriodeAktif()->id_periode)->sum('kredit')) }}
                                     </th>
                                     <th>
-                                        {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('debit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->sum('kredit')) }}
+                                        {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->where('id_periode',getPeriodeAktif()->id_periode)->sum('debit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->where('id_periode',getPeriodeAktif()->id_periode)->sum('kredit')) }}
                                     </th>
                                 </tr>
                             </tfoot>
