@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Akun;
+use App\Models\BukuBesar;
+use App\Models\NeracaSaldo;
 use App\Models\Periode;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,8 +23,11 @@ class General extends Controller
 
     public function dashboard()
     {
+        $data['neracasaldo'] = NeracaSaldo::all();
+        $data['akun'] = Akun::all();
+        $data['bukubesar'] = BukuBesar::all();
         $data['periode'] = Periode::all();
-        return view('pages.dashboard.index',$data);
+        return view('pages.dashboard.index', $data);
     }
 
     public function profile()
@@ -66,10 +72,10 @@ class General extends Controller
         return redirect()->back();
     }
 
-    public function setPeriodeAktif(Request $request){
-        Periode::where('is_active','1')->update(['is_active' => '0']);
-        Periode::where('id_periode',$request->periode)->update(['is_active'=> '1']);
+    public function setPeriodeAktif(Request $request)
+    {
+        Periode::where('is_active', '1')->update(['is_active' => '0']);
+        Periode::where('id_periode', $request->periode)->update(['is_active' => '1']);
         return 1;
     }
-
 }
