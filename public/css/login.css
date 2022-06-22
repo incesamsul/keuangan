@@ -1,204 +1,269 @@
+/*=======================================================
+
+                   G o o d L u c k
+
+=========================================================*/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 body {
-    display: flex;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container {
+    width: 100vw;
     height: 100vh;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 7rem;
+    padding: 0 2rem;
+}
+
+.img {
+    display: flex;
+    justify-content: flex-end;
     align-items: center;
-    background: #a16612;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #FFA426, #a16612);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #FFA426, #a16612);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.login-block {
-    float: left;
-    width: 100%;
-    height: 635px;
-    padding: 40px 0;
+.img img {
+    width: 500px;
 }
 
-.form-control:focus {
-    border-color: #FFA426;
-    box-shadow: inset 0 1px 1px #a16612, 0 0 8px rgba(255, 204, 0, 0.6);
-}
-
-.login-wrapper {
-    width: 1140px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 15px 20px 0px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
-.carousel-inner {
-    border-radius: 0 10px 10px 0;
-}
-
-.carousel-caption {
-    text-align: left;
-    left: 5%;
-}
-
-.login-sec {
-    padding: 30px 30px;
-    position: relative;
-    min-height: 550px
-}
-
-.banner-sec {
-    min-height: 550px;
-}
-
-.carousel-item img {
-    min-height: 550px;
-}
-
-.text-uppercase {
-    font-family: sans-serif;
-    font-size: 12px;
-}
-
-.forgot {
-    transition: all .5s ease;
-    display: inline-block;
-    margin-left: 170px;
-    font-weight: bold;
-    font-size: 14px;
-    color: #ffffff;
-}
-
-.forgot:hover {
-    transform: scale(1.1);
-}
-
-.login-sec .copy-text {
-    position: absolute;
-    width: 80%;
-    bottom: 20px;
-    font-size: 13px;
+.login-container {
+    display: flex;
+    align-items: center;
     text-align: center;
 }
 
-.login-sec .copy-text a {
-    color: #ffffff;
-    cursor: pointer;
-    -webkit-transition: all .40s ease-in-out;
-    -moz-transition: all .40s ease-in-out;
-    -ms-transition: all .40s ease-in-out;
-    -o-transition: all .40s ease-in-out;
-    transition: all .40s ease-in-out;
-}
-
-.login-sec .copy-text a:hover {
-    color: #FFA426;
-    text-decoration: underline;
-}
-
-.login-sec h2 {
-    margin-bottom: 20px;
-    font-weight: 800;
-    font-size: 30px;
-    color: #FFA426;
-}
-
-.login-sec h2:after {
-    content: " ";
+.avator {
     width: 100px;
-    height: 5px;
-    background: #FFA426;
-    display: block;
-    margin-top: 15px;
-    border-radius: 3px;
-    margin-left: auto;
-    margin-right: auto
 }
 
-.login-button {
-    background: #FFA426;
-    border: 1px solid transparent;
-    height: 40px;
-    color: #fff;
-    font-weight: 600;
-    font-size: 18px;
-    background: -webkit-linear-gradient(right, #a16612, #ffffff, #FFA426);
-    background: -o-linear-gradient(right, #a16612, #ffffff, #FFA426);
-    background: linear-gradient(right, #a16612, #ffffff, #FFA426);
-    background-size: 250% 100%;
-    background-position: 100% 50%;
-    transition: 0.6s;
-    cursor: pointer;
-    border-radius: 20px;
-    margin-top: 20px;
+form {
+    width: 360px;
 }
 
-.banner-text {
-    width: 80%;
+form h2 {
+    font-size: 2.9rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin: 15px 0;
+    color: #333;
+}
+
+.input-div {
+    position: relative;
+    display: grid;
+    grid-template-columns: 7% 93%;
+    margin: 25px 0;
+    padding: 5px 0;
+    border-bottom: 2px solid #d9d9d9;
+}
+
+.input-div:after,
+.input-div::before {
+    content: "";
     position: absolute;
-    bottom: 20px;
-    padding-left: 15px;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: #F7030C;
+    transition: 0.3s;
 }
 
-.banner-text h2 {
-    color: #ffffff;
-    font-weight: 600;
+.input-div:after {
+    right: 50%;
 }
 
-.banner-text h2:after {
-    content: " ";
-    width: 100px;
-    height: 5px;
-    background: #ffffff;
+.input-div::before {
+    left: 50%;
+}
+
+.input-div.focus .i i {
+    color: #F7030C;
+}
+
+.input-div.focus div h5 {
+    top: -5px;
+    font-size: 15px;
+}
+
+.input-div.focus:after,
+.input-div.focus:before {
+    width: 50%;
+}
+
+.input-div.one {
+    margin-top: 0;
+}
+
+.input-div.two {
+    margin-top: 4px;
+}
+
+.i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.i i {
+    color: #d9d9d9;
+    transition: 0.3s;
+}
+
+.input-div>div {
+    position: relative;
+    height: 45px;
+}
+
+.input-div>div h5 {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 0.5rem 0.7rem;
+    font-size: 1.2rem;
+    color: #555;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+a {
     display: block;
-    margin-top: 10px;
-    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    color: #999;
+    font-size: 0.9rem;
+    transition: 0.3s;
 }
 
-.banner-text p {
-    color: #ffffff;
+a:hover {
+    color: #F7030C;
 }
 
-.login-button:hover,
-.login-button:focus {
-    background-position: 0% 50%;
-    transition: 0.6s;
+.btn {
+    display: block;
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    outline: none;
+    border: none;
+    background-image: linear-gradient(to right, #F7030C, #a1191d, #c2e900);
+    cursor: pointer;
+    color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-size: 200%;
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+
+.btn:hover {
+    background-position: right;
+}
+
+footer {
+    width: 100%;
+    background-color: #32323267;
+    color: #f2f2f2;
+    height: 8vh;
+    text-align: center;
+    padding-top: 3vh;
+    padding-bottom: 1vh;
 }
 
 
-/* Extra small devices (phones, 600px and down) */
+/* important part for any devices */
 
-@media only screen and (max-width: 1200px) {
-    .login-wrapper {
-        width: 90%;
-    }
-}
-
-@media only screen and (max-width: 900px) {
-    .login-wrapper {
-        width: 100% !important;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .login-block {
-        padding: 0;
+@media screen and (max-width: 1050px) {
+    .container {
+        grid-gap: 5rem;
     }
     body {
-        align-items: stretch;
+        background-color: rgb(86, 153, 216);
+    }
+    form h2 {
+        color: whitesmoke;
+    }
+    .input-div>div h5 {
+        color: snow;
+    }
+    a {
+        color: snow;
     }
 }
 
-@media only screen and (max-width: 1100px) {
-    .col-md-4.login-sec {
-        float: left;
-        flex: 0 0 100%;
-        min-width: 100%
+@media screen and (max-width: 1000px) {
+    form {
+        width: 290px;
     }
-    .login-wrapper {
-        width: 90%;
+    form h2 {
+        font-size: 2.4rem;
+        margin: 8px 0;
     }
-    .banner-sec {
-        display: none !important;
+    .img img {
+        width: 400px;
+    }
+    body {
+        background-color: blueviolet;
+    }
+    form h2 {
+        color: whitesmoke;
+    }
+    .input-div>div h5 {
+        color: snow;
+    }
+    a {
+        color: snow;
     }
 }
+
+@media screen and (max-width: 900px) {
+    .img {
+        display: none;
+    }
+    .container {
+        grid-template-columns: 1fr;
+    }
+    .login-container {
+        justify-content: center;
+    }
+    footer {
+        width: auto;
+        height: auto;
+    }
+    body {
+        background-color: black;
+    }
+    form h2 {
+        color: whitesmoke;
+    }
+    .input-div>div h5 {
+        color: snow;
+    }
+    a {
+        color: snow;
+    }
+}
+
+
+/*=========== T H A N K   Y O U =============*/
