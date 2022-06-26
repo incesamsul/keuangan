@@ -18,7 +18,7 @@
 
                     <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
                         <div class="dropdown-menu dropdown-list dropdown-menu-right">
-                            <div class="dropdown-header">Berita terbaru
+                            {{-- <div class="dropdown-header">Berita terbaru
                                 <div class="float-right">
                                     <a href="#">Mark All As Read</a>
                                 </div>
@@ -37,7 +37,7 @@
                             </div>
                             <div class="dropdown-footer text-center">
                                 <a href="#">View All <i class="fas fa-chevron-right"></i></a>
-                            </div>
+                            </div> --}}
                         </div>
                     </li>
                     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
@@ -46,7 +46,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <div class="dropdown-title">{{ auth()->user()->role }}</div>
-                            <a href="features-profile.html" class="dropdown-item has-icon">
+                            <a href="{{ URL::to('/profile') }}" class="dropdown-item has-icon">
                                 <i class="far fa-user"></i> Profile
                             </a>
                             {{-- <a href="features-activities.html" class="dropdown-item has-icon">

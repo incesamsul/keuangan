@@ -24,13 +24,9 @@
             @if (auth()->user()->role == 'Administrator')
                 {{-- MENU ADMIN --}}
                 <li class="menu-header">Admin</li>
-                <li class="nav-item dropdown " id="liPengguna">
-                    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-users"></i>
-                        <span>Pengguna</span></a>
-                    <ul class="dropdown-menu">
-                        <li id="liManajemenPengguna"><a class="nav-link" href="/admin/pengguna">Manajemen
-                                Pengguna</a></li>
-                    </ul>
+                <li id="liPengguna">
+                    <a href="/admin/pengguna"><i class="fas fa-users"></i>
+                        <span>Manajemen Pengguna</span></a>
                 </li>
 
                 {{-- END OF MENU ADMIN --}}

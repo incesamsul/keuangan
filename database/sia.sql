@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2022 at 04:07 PM
+-- Generation Time: Jun 24, 2022 at 08:40 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.4.21
 
@@ -57,7 +57,6 @@ INSERT INTO `akun` (`id_akun`, `no_akun`, `nama_akun`, `created_at`, `updated_at
 (18, 32020, 'Laba Tahun Berjalan', '2022-05-17 21:37:58', '2022-05-17 21:37:58'),
 (19, 39999, 'Historical Balancing Account', '2022-05-17 21:38:20', '2022-05-17 21:38:20'),
 (20, 41000, 'Pendapatan', '2022-05-17 21:38:49', '2022-05-17 21:38:49'),
-(21, 61010, 'Biaya Gaji Driver', '2022-05-17 21:39:36', '2022-05-17 21:39:36'),
 (22, 61020, 'Biaya Gaji Administrasi', '2022-05-17 21:40:08', '2022-05-17 21:40:08'),
 (23, 61030, 'Biaya Perlengkapan Kantor', '2022-05-17 21:40:37', '2022-05-17 21:40:37'),
 (24, 61040, 'Biaya Perlengkapan Mobil', '2022-05-17 21:41:13', '2022-05-17 21:41:13'),
@@ -76,8 +75,6 @@ CREATE TABLE `bukubesar` (
   `id_akun` int(10) UNSIGNED NOT NULL,
   `id_jurnal` int(10) UNSIGNED NOT NULL,
   `saldo` int(11) NOT NULL,
-  `total_debit` int(11) NOT NULL,
-  `total_kredit` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -93,11 +90,10 @@ CREATE TABLE `jurnal` (
   `id_akun` int(10) UNSIGNED NOT NULL,
   `id_pemasok` int(11) DEFAULT NULL,
   `id_pelanggan` int(11) DEFAULT NULL,
+  `id_periode` int(11) NOT NULL,
   `tgl_transaksi` date NOT NULL,
   `debit` int(11) NOT NULL,
   `kredit` int(11) NOT NULL,
-  `total_debit` int(11) NOT NULL,
-  `total_kredit` int(11) NOT NULL,
   `file` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -107,24 +103,27 @@ CREATE TABLE `jurnal` (
 -- Dumping data for table `jurnal`
 --
 
-INSERT INTO `jurnal` (`id_jurnal`, `id_akun`, `id_pemasok`, `id_pelanggan`, `tgl_transaksi`, `debit`, `kredit`, `total_debit`, `total_kredit`, `file`, `created_at`, `updated_at`) VALUES
-(3, 3, NULL, NULL, '2019-12-31', 5700000, 0, 0, 0, '62848ece9dad7.jpg', '2022-05-17 21:47:19', '2022-05-18 13:14:38'),
-(4, 4, NULL, NULL, '2019-12-31', 17000000, 0, 0, 0, '62849d92856b6.jpg', '2022-05-17 21:48:08', '2022-05-18 14:17:38'),
-(5, 6, NULL, NULL, '2019-12-31', 1300000, 0, 0, 0, '', '2022-05-17 21:48:48', '2022-05-17 21:48:48'),
-(6, 13, NULL, NULL, '2019-12-31', 55500000, 0, 0, 0, '', '2022-05-17 21:49:25', '2022-05-17 21:49:25'),
-(7, 15, NULL, NULL, '2019-12-31', 0, 30500000, 0, 0, '62849e871af4a.jpg', '2022-05-17 21:50:05', '2022-05-18 14:21:43'),
-(8, 16, NULL, NULL, '2019-12-31', 0, 49000000, 0, 0, '', '2022-05-17 21:51:07', '2022-05-17 21:51:07'),
-(9, 4, NULL, NULL, '2020-12-01', 150000000, 0, 0, 0, '6289dea47ec20.jpg', '2022-05-17 22:10:04', '2022-05-22 13:56:36'),
-(10, 16, NULL, NULL, '2020-12-01', 0, 150000000, 0, 0, '6289dee265f93.jpg', '2022-05-17 22:10:54', '2022-05-22 13:57:38'),
-(11, 3, NULL, NULL, '2020-12-02', 50000000, 0, 0, 0, '6289df1518ddd.jpg', '2022-05-18 14:22:52', '2022-05-22 13:58:29'),
-(13, 4, NULL, NULL, '2020-12-02', 0, 50000000, 0, 0, '6289df2e6ecdd.jpg', '2022-05-19 10:15:08', '2022-05-22 13:58:54'),
-(14, 5, NULL, NULL, '2020-12-02', 1000000, 0, 0, 0, '6289df6349f65.jpg', '2022-05-22 13:59:49', '2022-05-22 13:59:49'),
-(15, 3, NULL, NULL, '2020-12-02', 0, 1000000, 0, 0, '6289df90f35be.jpg', '2022-05-22 14:00:33', '2022-05-22 14:00:33'),
-(16, 7, NULL, NULL, '2020-12-02', 2400000, 0, 0, 0, '6289dfd340857.jpg', '2022-05-22 14:01:39', '2022-05-22 14:01:39'),
-(17, 4, NULL, NULL, '2020-12-02', 0, 2400000, 0, 0, '6289e033a04aa.jpg', '2022-05-22 14:03:16', '2022-05-22 14:03:16'),
-(18, 21, NULL, NULL, '2020-12-30', 3000000, 0, 0, 0, '6289e07626e26.jpg', '2022-05-22 14:04:22', '2022-05-22 14:04:22'),
-(19, 22, NULL, NULL, '2020-12-30', 1500000, 0, 0, 0, '6289e0a9964f8.jpg', '2022-05-22 14:05:14', '2022-05-22 14:05:14'),
-(20, 3, NULL, NULL, '2020-12-30', 0, 4500000, 0, 0, '6289e0de4df79.jpg', '2022-05-22 14:06:06', '2022-05-22 14:06:06');
+INSERT INTO `jurnal` (`id_jurnal`, `id_akun`, `id_pemasok`, `id_pelanggan`, `id_periode`, `tgl_transaksi`, `debit`, `kredit`, `file`, `created_at`, `updated_at`) VALUES
+(9, 4, NULL, NULL, 2, '2022-12-01', 150000000, 0, '62b3dc32594e7.jpg', '2022-05-17 22:10:04', '2022-06-23 10:32:59'),
+(10, 16, NULL, NULL, 2, '2022-12-01', 0, 150000000, '62b3dc5e7b05e.jpg', '2022-05-17 22:10:54', '2022-06-23 10:37:33'),
+(11, 3, NULL, NULL, 2, '2022-12-02', 50000000, 0, '6289df1518ddd.jpg', '2022-05-18 14:22:52', '2022-06-23 10:59:48'),
+(13, 4, NULL, NULL, 2, '2022-12-02', 0, 50000000, '6289df2e6ecdd.jpg', '2022-05-19 10:15:08', '2022-06-23 11:03:33'),
+(14, 5, NULL, NULL, 2, '2022-12-02', 1000000, 0, '6289df6349f65.jpg', '2022-05-22 13:59:49', '2022-06-23 11:04:17'),
+(15, 3, NULL, NULL, 2, '2022-12-02', 0, 1000000, '6289df90f35be.jpg', '2022-05-22 14:00:33', '2022-06-23 11:04:55'),
+(16, 7, NULL, NULL, 2, '2022-12-02', 2400000, 0, '6289dfd340857.jpg', '2022-05-22 14:01:39', '2022-06-23 11:05:14'),
+(17, 4, NULL, NULL, 2, '2022-12-02', 0, 2400000, '6289e033a04aa.jpg', '2022-05-22 14:03:16', '2022-06-23 11:05:44'),
+(19, 22, NULL, NULL, 2, '2022-12-30', 1500000, 0, '6289e0a9964f8.jpg', '2022-05-22 14:05:14', '2022-06-23 11:06:04'),
+(20, 3, NULL, NULL, 2, '2022-12-30', 0, 1500000, '62a9f6af0875a.jpg', '2022-05-22 14:06:06', '2022-06-23 11:06:48'),
+(21, 8, NULL, NULL, 2, '2022-12-05', 200000, 0, '629d71c47c941.jpg', '2022-06-06 10:17:26', '2022-06-23 11:07:07'),
+(22, 5, NULL, NULL, 2, '2022-12-05', 0, 200000, '629d720c1e826.jpg', '2022-06-06 10:18:46', '2022-06-23 11:07:52'),
+(23, 9, NULL, NULL, 2, '2022-12-06', 1000000, 0, '629d725e6a3ea.jpg', '2022-06-06 10:19:59', '2022-06-23 11:09:26'),
+(24, 3, NULL, NULL, 2, '2022-12-06', 0, 1000000, '629d72b3e5a4b.jpg', '2022-06-06 10:21:24', '2022-06-23 11:10:20'),
+(25, 3, NULL, NULL, 2, '2022-12-10', 3000000, 0, '62a83a8d5fc79.jpg', '2022-06-06 10:22:32', '2022-06-23 11:39:30'),
+(26, 20, NULL, NULL, 2, '2022-12-10', 0, 3000000, '62a83aa746aa1.jpg', '2022-06-06 10:23:55', '2022-06-23 11:40:26'),
+(27, 3, NULL, NULL, 2, '2020-12-20', 1000000, 0, '62a810daab727.jpg', '2022-06-06 10:25:00', '2022-06-14 11:38:51'),
+(28, 20, NULL, NULL, 2, '2022-12-20', 0, 1000000, '62a810775ea24.jpg', '2022-06-06 10:26:04', '2022-06-23 11:40:42'),
+(31, 3, 1, NULL, 2, '2022-06-20', 5000000, 0, '62b0741e674dd.jpg', '2022-06-20 20:20:31', '2022-06-20 20:20:31'),
+(32, 15, 1, NULL, 2, '2022-06-20', 0, 5000000, '62b3dc01b976b.jpg', '2022-06-23 10:20:35', '2022-06-23 10:20:35');
 
 -- --------------------------------------------------------
 
@@ -188,10 +187,18 @@ CREATE TABLE `pelanggan` (
   `id_pelanggan` int(10) UNSIGNED NOT NULL,
   `nama_pelanggan` varchar(75) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat_pelanggan` varchar(75) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `telp_pelanggan` int(11) NOT NULL,
+  `telp_pelanggan` int(13) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `pelanggan`
+--
+
+INSERT INTO `pelanggan` (`id_pelanggan`, `nama_pelanggan`, `alamat_pelanggan`, `telp_pelanggan`, `created_at`, `updated_at`) VALUES
+(1, 'amal', 'mangga asem', 987654321, '2022-06-08 20:45:30', '2022-06-12 14:56:49'),
+(2, 'sri ningsih', 'pulau bungin', 2147483647, '2022-06-08 20:45:58', '2022-06-08 20:45:58');
 
 -- --------------------------------------------------------
 
@@ -203,7 +210,7 @@ CREATE TABLE `pemasok` (
   `id_pemasok` int(10) UNSIGNED NOT NULL,
   `nama_pemasok` varchar(75) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat_pemasok` varchar(75) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `telp_pemasok` int(11) NOT NULL,
+  `telp_pemasok` int(13) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -218,6 +225,30 @@ INSERT INTO `pemasok` (`id_pemasok`, `nama_pemasok`, `alamat_pemasok`, `telp_pem
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `periode`
+--
+
+CREATE TABLE `periode` (
+  `id_periode` int(11) NOT NULL,
+  `periode` int(11) NOT NULL,
+  `is_active` enum('0','1') NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `periode`
+--
+
+INSERT INTO `periode` (`id_periode`, `periode`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, 2021, '0', NULL, '2022-06-20 20:49:02'),
+(2, 2022, '1', NULL, '2022-06-22 13:48:25'),
+(3, 2023, '0', NULL, '2022-06-22 13:47:51'),
+(4, 2024, '0', NULL, '2022-06-20 20:50:51');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `profile`
 --
 
@@ -225,19 +256,8 @@ CREATE TABLE `profile` (
   `id_profile` int(10) UNSIGNED NOT NULL,
   `id_user` bigint(20) UNSIGNED NOT NULL,
   `jenis_kelamin` enum('L','P') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tempat_lahir` varchar(75) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tanggal_lahir` date NOT NULL,
-  `nisn` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
   `no_telp` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_ayah` varchar(75) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `pekerjaan_ayah` varchar(75) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_ibu` varchar(75) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `pekerjaan_ibu` varchar(75) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tahun_masuk` year(4) NOT NULL,
-  `tahun_lulus` year(4) NOT NULL,
-  `no_ijazah` varchar(75) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_skhun` varchar(75) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -246,10 +266,10 @@ CREATE TABLE `profile` (
 -- Dumping data for table `profile`
 --
 
-INSERT INTO `profile` (`id_profile`, `id_user`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `nisn`, `alamat`, `no_telp`, `nama_ayah`, `pekerjaan_ayah`, `nama_ibu`, `pekerjaan_ibu`, `tahun_masuk`, `tahun_lulus`, `no_ijazah`, `no_skhun`, `created_at`, `updated_at`) VALUES
-(1, 1, 'L', 'jl;', '2021-11-26', 'jlkjlj', 'ljlj', 'jl', 'jlj', 'ljl', 'jljl', 'jlkjl', 2000, 2000, 'jlkjlkj', 'lkjl', '2021-11-25 11:34:44', '2021-11-25 11:56:23'),
-(2, 3, 'L', 'jl;', '2021-11-26', 'jlkjlj', 'ljlj', 'jl', 'jlj', 'ljl', 'jljl', 'jlkjl', 2000, 2000, 'jlkjlkj', 'lkjl', '2021-11-25 11:34:44', '2021-11-25 11:56:23'),
-(3, 2, 'L', 'jl;', '2021-11-26', 'jlkjlj', 'ljlj', 'jl', 'jlj', 'ljl', 'jljl', 'jlkjl', 2000, 2000, 'jlkjlkj', 'lkjl', '2021-11-25 11:34:44', '2021-11-25 11:56:23');
+INSERT INTO `profile` (`id_profile`, `id_user`, `jenis_kelamin`, `alamat`, `no_telp`, `created_at`, `updated_at`) VALUES
+(1, 1, 'L', 'ljlj', 'jl', '2021-11-25 11:34:44', '2021-11-25 11:56:23'),
+(2, 3, 'L', 'ljlj', 'jl', '2021-11-25 11:34:44', '2021-11-25 11:56:23'),
+(3, 2, 'L', 'ljlj', 'jl', '2021-11-25 11:34:44', '2021-11-25 11:56:23');
 
 -- --------------------------------------------------------
 
@@ -275,7 +295,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `role`, `foto`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@mail.com', NULL, '$2y$10$N6nmGrHUtLAw5/5SlPZqEehn.S5KDNDFHf1yuW184mEw5zLWhVeLm', 'Administrator', '61b5cf20cb753.jpg', NULL, '2021-11-25 09:06:43', '2021-12-12 18:29:52'),
+(1, 'admin', 'admin@mail.com', NULL, '$2y$10$N6nmGrHUtLAw5/5SlPZqEehn.S5KDNDFHf1yuW184mEw5zLWhVeLm', 'Administrator', '62a1e5837db31.jpg', NULL, '2021-11-25 09:06:43', '2022-06-09 19:20:21'),
 (2, 'amalia', 'amalia@mail.com', NULL, '$2y$10$Pt/9r/VO830MdtDKcoN9CO7qDJDL1QrcpiJYU0Yww/X9wJLmaSUDm', 'staff', '', NULL, '2022-02-13 23:49:09', '2022-02-13 23:49:09'),
 (3, 'muhammad', 'muhammad@mail.com', NULL, '$2y$10$mHsUl/K3.0bfT9zLpsP7HO5uuxXyGeZEEkOBfYrgbXkq.rz0fczbu', 'pimpinan', '', NULL, '2022-02-13 23:53:29', '2022-02-13 23:53:29');
 
@@ -302,7 +322,8 @@ ALTER TABLE `bukubesar`
 --
 ALTER TABLE `jurnal`
   ADD PRIMARY KEY (`id_jurnal`),
-  ADD KEY `jurnal_id_akun_foreign` (`id_akun`);
+  ADD KEY `jurnal_id_akun_foreign` (`id_akun`),
+  ADD KEY `jurnal_id_periode_foreign` (`id_periode`);
 
 --
 -- Indexes for table `migrations`
@@ -327,6 +348,12 @@ ALTER TABLE `pelanggan`
 --
 ALTER TABLE `pemasok`
   ADD PRIMARY KEY (`id_pemasok`);
+
+--
+-- Indexes for table `periode`
+--
+ALTER TABLE `periode`
+  ADD PRIMARY KEY (`id_periode`);
 
 --
 -- Indexes for table `profile`
@@ -362,7 +389,7 @@ ALTER TABLE `bukubesar`
 -- AUTO_INCREMENT for table `jurnal`
 --
 ALTER TABLE `jurnal`
-  MODIFY `id_jurnal` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_jurnal` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -380,13 +407,19 @@ ALTER TABLE `neracasaldo`
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pelanggan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pemasok`
 --
 ALTER TABLE `pemasok`
   MODIFY `id_pemasok` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `periode`
+--
+ALTER TABLE `periode`
+  MODIFY `id_periode` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `profile`

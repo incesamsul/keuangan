@@ -27,8 +27,8 @@
               <i class="fas fa-user"></i>
             </div>
             <div>
-              <h5>Email</h5>
-              <input class="input" type="text" name="email"/>
+              <h5>Username</h5>
+              <input class="input" type="text" name="name"/>
             </div>
           </div>
           <div class="input-div" two>

@@ -29,12 +29,6 @@
                             <div class="media-title">Jenis Profile</div>
                         </div>
                     </li>
-                    {{-- <li class="media">
-              <div class="media-body">
-                  <div class="float-right"><div class="font-weight-600 text-muted text-small"><i class="badge badge-danger">Tidak Aktif</i></div></div>
-                  <div class="media-title">Bot Telegram</div>
-              </div>
-            </li> --}}
                     <li class="media">
                         <div class="media-body">
                             <div class="float-right">
@@ -53,16 +47,6 @@
                             </div>
                         </div>
                     </li>
-                    {{-- <li class="media">
-                <div class="media-body">
-                  <div class="form-group">
-                      <label for="exampleFormControlInput1">Aktivasi Bot Telegram</label>
-                      <input type="foto" class="form-control" id="exampleFormControlInput1" placeholder="ID Telegram">
-                    </div>
-                </div>
-              </li>
-              <p>Bot Telegram SIAKAD STMIK AKBA
-                  Aktifkan fitur Bot Telegram dengan mendaftarkan ID Telegram Anda. Fitur ini akan memberikan layanan notifikasi dan akses perintah SIAKAD STMIK AKBA melalui aplikasi Telegram. Klik SASiakadBot untuk menjalankan bot ini.</p> --}}
                 </ul>
             </div>
         </div>
@@ -97,10 +81,6 @@
                                         <td class="bg-soft-primary">Jensi Kelamin</td>
                                         <td>{{ $user->jenis_kelamin }}</td>
                                     </tr>
-                                    {{-- <tr>
-                                        <td class="bg-soft-primary">Tempat Dan Tanggal Lahir</td>
-                                        <td>{{ $user->tempat_lahir . "  " . $user->tanggal_lahir }}</td>
-                                    </tr> --}}
                                     <tr>
                                         <td class="bg-soft-primary">Alamat</td>
                                         <td>{{ $user->alamat }}</td>

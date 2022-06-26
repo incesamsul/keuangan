@@ -17,7 +17,6 @@
                         <button type="button" class="btn btn-tambah btn-warning" data-toggle="modal" data-target="#formModal">
                             <i class="fas fa-plus"></i>
                         </button>
-
                     </div>
                     <div class="card-body">
 
@@ -60,7 +59,7 @@
                                         <td>
                                             <a href="jurnal/delete/{{ $row->id_jurnal }}" class="btn btn-danger"><i
                                                     class="fas fa-trash"></i> Hapus</a>
-                                            <a data-edit='@json($row)' data-toggle="modal" data-target="#formModal" class="btn btn-primary tombol-edit"><i class="fas fa-pen"></i>Edit</a>
+                                            <a data-edit='@json($row)' data-toggle="modal" data-target="#formModal" class="btn btn-primary tombol-edit text-light"><i class="fas fa-pen"></i>Edit</a>
                                             {{-- <a href="" id="editCompany" data-toggle="modal" data-target='#practice_modal' data-id="{{ $row->id }}" ><button class="btn btn-primary"><i class="fas fa-pen"></i>Edit</button></a> --}}
                                         </td>
                                     </tr>

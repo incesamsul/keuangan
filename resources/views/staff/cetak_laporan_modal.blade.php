@@ -148,14 +148,14 @@
 
 {{-- TABLE MODAL --}}
 <table class="table border-bottom mt-50" cellpadding="10">
-    <thead>
+    {{-- <thead>
         <tr>
 
             <td>Nama Akun</td>
             <td>Debit</td>
             <td>Kredit</td>
         </tr>
-    </thead>
+    </thead> --}}
     <tbody>
         <?php $totalDebit = 0 ?>
         <?php $totalKredit = 0 ?>
