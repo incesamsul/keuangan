@@ -16,7 +16,7 @@
                     </li>
                     <li class="media">
                         <div class="media-body">
-                            <a href="" class="btn btn-dark btn-lg btn-block btn-icon-split" data-toggle="modal" data-target="#modal">
+                            <a href="" class="btn btn-warning btn-lg btn-block btn-icon-split" data-toggle="modal" data-target="#modal">
                                 <i class="fas fa-camera"></i> Ganti Foto Profile
                             </a>
                         </div>
@@ -39,12 +39,15 @@
                     </li>
                     <li class="media">
                         <div class="media-body">
+                            <form action="{{ URL::to('/ubah_sandi') }}" method="POST">
+                                @csrf
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Ganti Kata sandi" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                <div class="input-group-append">
-                                    <button class="btn btn-dark" type="button">Ganti</button>
+                                    <input type="text" name="sandi_baru" class="form-control" placeholder="Ganti Kata sandi" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-warning" type="button">Ganti</button>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </li>
                 </ul>
@@ -98,10 +101,10 @@
                         </li>
                         <li class="media">
                             <div class="media-body">
-                                <a href="" class="btn btn-dark btn-lg btn-block btn-icon-split" data-toggle="modal" data-target="#modal">
+                                <a href="" class="btn btn-warning btn-lg btn-block btn-icon-split" data-toggle="modal" data-target="#modal">
                                     <i class="fas fa-camera"></i> Ganti Foto Profile
                                 </a>
-                                {{-- <a href="" class="btn btn-dark btn-lg btn-block btn-icon-split">
+                                {{-- <a href="" class="btn btn-warning btn-lg btn-block btn-icon-split">
                                     <i class="fas fa-pen"></i> Edit Biodata
                                 </a>  --}}
                             </div>
