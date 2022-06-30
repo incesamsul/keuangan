@@ -20,7 +20,7 @@
                     <tr>
                         <th>Nama Pelanggan</th>
                         <th>Alamat Pelanggan</th>
-                        <th>No Telp Pelanggan</th>
+                        <th>NPWP Pelanggan</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -70,7 +70,7 @@
               <input type="text" class="form-control" name="alamat_pelanggan" id="alamat_pelanggan">
           </div>
           <div class="form-group">
-              <label for="telp_pelanggan">No Telp pelanggan</label>
+              <label for="telp_pelanggan">NPWP pelanggan</label>
               <input type="text" class="form-control" name="telp_pelanggan" id="telp_pelanggan">
           </div>
       </div>
