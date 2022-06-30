@@ -39,15 +39,15 @@
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-list-alt"></i>
                         <span>Data</span></a>
                     <ul class="dropdown-menu">
-                        <li id="liManajemenPengguna"><a class="nav-link" href="/staff/data_akun">Data Akun</a>
+                        <li id="liManajemenPengguna"><a class="nav-link" href="/staff/data_akun">Akun</a>
                         </li>
                     </ul>
                     <ul class="dropdown-menu">
-                        <li id="liManajemenPengguna"><a class="nav-link" href="/staff/data_pelanggan">Data Pelanggan</a>
+                        <li id="liManajemenPengguna"><a class="nav-link" href="/staff/data_pelanggan">Pelanggan</a>
                         </li>
                     </ul>
                     <ul class="dropdown-menu">
-                        <li id="liManajemenPengguna"><a class="nav-link" href="/staff/data_pemasok">Data Pemasok</a>
+                        <li id="liManajemenPengguna"><a class="nav-link" href="/staff/data_pemasok">Pemasok</a>
                         </li>
                     </ul>
                 </li>
@@ -55,9 +55,19 @@
                     <a href="/staff/jurnal"><i class="fas fa-fax"></i>
                         <span>Jurnal</span></a>
                 </li>
-                <li id="liData">
-                    <a href="/staff/buku_besar"><i class="fas fa-book"></i>
+                <li class="nav-item dropdown " id="liData">
+                    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-chart-bar"></i>
                         <span>Buku Besar</span></a>
+                    <ul class="dropdown-menu">
+                        <li id="liManajemenPengguna"><a class="nav-link" href="/staff/buku_besar">Umum</a>
+                        </li>
+                    </ul>
+                    <ul class="dropdown-menu">
+                        <li id="liManajemenPengguna"><a class="nav-link" href="/staff/buku_besarPiutang">Pembantu Piutang</a></li>
+                    </ul>
+                    <ul class="dropdown-menu">
+                        <li id="liManajemenPengguna"><a class="nav-link" href="/staff/buku_besarUtang">Pembantu Utang</a></li>
+                    </ul>
                 </li>
                 <li id="liData">
                     <a href="/staff/neraca_saldo"><i class="fas fa-balance-scale"></i>

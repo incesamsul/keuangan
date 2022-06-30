@@ -99,6 +99,21 @@ class Staff extends Controller
         // return view('staff.buku_besar', $data);
     }
 
+    public function buku_besarPiutang()
+    {
+        $data['jurnal'] = Jurnal::all();
+        $data['akun'] = Akun::all();
+        $data['pelanggan'] = Pelanggan::all();
+        return view('staff.buku_besarPiutang', $data);
+    }
+
+    public function buku_besarUtang()
+    {
+        $data['akun'] = Akun::all();
+        $data['pemasok'] = Pemasok::all();
+        return view('staff.buku_besarUtang', $data);
+    }
+
     public function neraca_saldo()
     {
         $data['neracasaldo'] = NeracaSaldo::all();

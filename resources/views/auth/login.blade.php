@@ -27,8 +27,8 @@
               <i class="fas fa-user"></i>
             </div>
             <div>
-              <h5>Username</h5>
-              <input class="input" type="text" name="name"/>
+              {{-- <h5>Username</h5> --}}
+              <input class="input" type="text" name="name" placeholder="Username"/>
             </div>
           </div>
           <div class="input-div" two>
@@ -36,8 +36,8 @@
               <i class="fas fa-lock"></i>
             </div>
             <div>
-              <h5>password</h5>
-              <input class="input" type="password" name="password"/>
+              {{-- <h5>password</h5> --}}
+              <input class="input" type="password" name="password" placeholder="Password"/>
             </div>
           </div>
           {{-- <a href="#">Forgot password ?</a> --}}
