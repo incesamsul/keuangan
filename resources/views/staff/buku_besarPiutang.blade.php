@@ -7,27 +7,26 @@
             <div class="col-lg-12">
                 <div class="card ">
                     <div class="card-header d-flex justify-content-between">
-                        <h4>Buku Besar Piutang</h4>
+                        <h4>Buku Besar</h4>
                     </div>
                     <div class="card-body">
                         <table id="perUser" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>Nama Pelanggan</th>
-                                    <th>Alamat Pelanggan</th>
-                                    <th>No Telp Pelanggan</th>
+                                    <th>No Akun</th>
+                                    <th>Nama Akun</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $i = 0; ?>
-                                @foreach ($pelanggan as $item)
+                                @foreach ($akun as $item)
                                     <?php $i++; ?>
+                                    @if ($item->nama_akun == 'Piutang Usaha')
 
                                     <tr>
-                                        <td>{{ $item->nama_pelanggan }}</td>
-                                        <td>{{ $item->alamat_pelanggan }}</td>
-                                        <td>{{ $item->telp_pelanggan }}</td>
+                                        <td>{{ $item->no_akun }}</td>
+                                        <td>{{ $item->nama_akun }}</td>
                                         <td>
                                             {{-- modal --}}
                                             <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -36,6 +35,7 @@
                                             </button>
                                         </td>
                                     </tr>
+                                    @endif
                                 @endforeach
 
                             </tbody>
@@ -58,7 +58,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content ">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Buku Besar Piutang</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Buku Besar Akun</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
