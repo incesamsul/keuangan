@@ -40,8 +40,18 @@
               <input class="input" type="password" name="password" placeholder="Password"/>
             </div>
           </div>
-          {{-- <a href="#">Forgot password ?</a> --}}
           <input type="submit" class="btn" value="Login" />
+          <table style="width: 100%">
+            <tr>
+              <td>
+                <a class="nav-link" href="{{ URL::to('/bantuan') }}"><i
+                  class="fas fa-question-circle"></i> <span>Bantuan</span></a>
+              </td>
+              <td>
+                <a href="#">Forgot password ?</a>
+              </td>
+            </tr>
+          </table>
         </form>
       </div>
     </div>
