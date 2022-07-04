@@ -21,17 +21,17 @@
                             </thead>
                             <tbody>
                                 <?php $i = 0; ?>
-                                @foreach ($pemasok as $item)
+                                @foreach ($pemasok as $row)
                                     <?php $i++; ?>
 
                                     <tr>
-                                        <td>{{ $item->nama_pemasok }}</td>
-                                        <td>{{ $item->alamat_pemasok }}</td>
-                                        <td>{{ $item->telp_pemasok }}</td>
+                                        <td>{{ $row->nama_pemasok }}</td>
+                                        <td>{{ $row->alamat_pemasok }}</td>
+                                        <td>{{ $row->telp_pemasok }}</td>
                                         <td>
                                             {{-- modal --}}
                                             <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                data-target="#exampleModal-{{ $item->id_pemasok }}">
+                                                data-target="#exampleModal-{{ $row->id_pemasok }}">
                                                 <i class="fa fa-eye"></i>
                                             </button>
                                         </td>
@@ -52,8 +52,8 @@
 
 
     <!-- Modal -->
-    @foreach ($akun as $item)
-        <div class="modal fade" id="exampleModal-{{ $item->id_pemaosk }}" tabindex="-1"
+    @foreach ($pemasok as $item)
+        <div class="modal fade" id="exampleModal-{{ $item->id_pemasok }}" tabindex="-1"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content ">
@@ -77,7 +77,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->where('id_periode',getPeriodeAktif()->id_periode) as $ite)
+                                @foreach (App\Models\Jurnal::all()->where('id_pemasok', $item->id_pemasok)->where('id_periode',getPeriodeAktif()->id_periode) as $ite)
                                     <tr>
                                         <td>{{ $ite->tgl_transaksi }}</td>
                                         <td>{{ $ite->akun->nama_akun }}</td>
@@ -96,14 +96,14 @@
                                     <th>total</th>
                                     <th>
                                         {{-- sum debit jurnal --}}
-                                        {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->where('id_periode',getPeriodeAktif()->id_periode)->sum('debit')) }}
+                                        {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_pemasok', $item->id_pemasok)->where('id_periode',getPeriodeAktif()->id_periode)->sum('debit')) }}
                                     </th>
                                     <th>
                                         {{-- sum kredit jurnal --}}
-                                        {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->where('id_periode',getPeriodeAktif()->id_periode)->sum('kredit')) }}
+                                        {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_pemasok', $item->id_pemasok)->where('id_periode',getPeriodeAktif()->id_periode)->sum('kredit')) }}
                                     </th>
                                     <th>
-                                        {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->where('id_periode',getPeriodeAktif()->id_periode)->sum('debit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->where('id_periode',getPeriodeAktif()->id_periode)->sum('kredit')) }}
+                                        {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_pemasok', $item->id_pemasok)->where('id_periode',getPeriodeAktif()->id_periode)->sum('debit') - App\Models\Jurnal::all()->where('id_pemasok', $item->id_pemasok)->where('id_periode',getPeriodeAktif()->id_periode)->sum('kredit')) }}
                                     </th>
                                 </tr>
                             </tfoot>
