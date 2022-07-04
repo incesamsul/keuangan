@@ -11,4 +11,10 @@ class Pelanggan extends Model
 
     protected $table = 'pelanggan';
     protected $guarded = ['id_pelanggan'];
+
+    public function jurnal()
+    {
+        return $this->hasOne(Jurnal::class, 'id_pelanggan', 'id_pelanggan');
+    }
+
 }
