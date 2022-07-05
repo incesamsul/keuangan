@@ -31,7 +31,8 @@
                         <td>
                           <a href="akun/delete/{{ $row->id_akun }}" class="btn btn-danger"><i
                                 class="fas fa-trash"></i>Hapus</a>
-                          <a data-edit='@json($row)' data-toggle="modal" data-target="#formModal" class="btn btn-edit btn-primary text-light"><i class="fas fa-pen"></i>Edit</a>
+                          <a data-edit='@json($row)' data-toggle="modal" data-target="#formModal" 
+                          class="btn btn-edit btn-primary text-light"><i class="fas fa-pen"></i>Edit</a>
                         </td>
                       </tr>
                   @endforeach

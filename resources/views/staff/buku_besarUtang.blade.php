@@ -7,7 +7,7 @@
             <div class="col-lg-12">
                 <div class="card ">
                     <div class="card-header d-flex justify-content-between">
-                        <h4>Buku Besar Piutang</h4>
+                        <h4>Buku Besar Utang</h4>
                     </div>
                     <div class="card-body">
                         <table id="perUser" class="table table-striped table-bordered" style="width:100%">

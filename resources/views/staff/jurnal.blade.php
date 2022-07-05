@@ -180,11 +180,11 @@
                         </div>
                         <div class="form-group">
                             <label for="debit">Debit</label>
-                            <input type="text" class="form-control" name="debit" id="debit">
+                            <input type="text" class="form-control uang" name="debit" id="debit">
                         </div>
                         <div class="form-group">
                             <label for="kredit">Kredit</label>
-                            <input type="text" class="form-control" name="kredit" id="kredit">
+                            <input type="text" class="form-control uang" name="kredit" id="kredit">
                         </div>
 
                         <div class="form-group">
@@ -217,6 +217,16 @@
 
 @endsection
 @section('script')
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                // Format mata uang.
+                $( '.uang' ).mask('000.000.000.000.000.000', {reverse: true});
+
+            })
+        </script>
     <script>
 
         $('#filter-tahun').on('click',function(){
