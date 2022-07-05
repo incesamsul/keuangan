@@ -8,7 +8,7 @@
                 <div class="card ">
                     <div class="card-header d-flex justify-content-between">
                         {{-- <div class="title-and-filter d-flex flex-row">
-                            
+
                             <input id="input-filter-tahun" type="number" min="1900" max="2099" step="1" value="{{ $tahun }}" class="form-control"/>
                             <button id="filter-tahun" class="btn btn-warning mx-2"><i class="fas fa-sync"></i></button>
                         </div> --}}
@@ -88,7 +88,7 @@
     <!-- Modal -->
     <div class="modal fade" id="modalView" data-backdrop="static" data-keyboard="false" tabindex="-1"
         aria-labelledby="modalViewLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalViewLabel">Bukti transaksi</h5>

@@ -7,8 +7,8 @@
             <div class="col-lg-12">
                 <div class="card ">
                     <div class="card-header d-flex justify-content-between">
-                        <h4>Buku Besar Utang</h4>
-                    </div>
+                                 <h4>Buku Besar Utang</h4>
+        </div>
                     <div class="card-body">
                         <table id="perUser" class="table table-striped table-bordered" style="width:100%">
                             <thead>
@@ -53,7 +53,7 @@
 
     <!-- Modal -->
     @foreach ($pemasok as $item)
-        <div class="modal fade" id="exampleModal-{{ $item->id_pemasok }}" tabindex="-1"
+        <div class="modal fade" id="exampleModal-{{ $item->idid_pemasok}" tabindex="-1"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content ">
