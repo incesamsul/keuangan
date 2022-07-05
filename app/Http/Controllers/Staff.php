@@ -319,7 +319,7 @@ class Staff extends Controller
 
     public function tambah_transaksi(Request $request)
     {
-        $nama_file = uniqid() . '.jpg';
+        $nama_file = uniqid() . '.pdf';
         $request->file('bukti_transaksi')->move(public_path('data/bukti_transaksi/'), $nama_file);
         Jurnal::create([
             'no_bukti' => $request->no_bukti,
@@ -413,7 +413,7 @@ class Staff extends Controller
     public function update(Request $request, $id)
     {
 
-        $nama_file = uniqid() . '.jpg';
+        $nama_file = uniqid() . '.pdf';
         if ($request->has('bukti_transaksi') != null) {
             // File::delete('data/bukti_transaksi/' . DB::table('jurnal')->where('id_jurnal', $id)->value('bukti_transaksi'));
             $request->file('bukti_transaksi')->move(public_path('data/bukti_transaksi/'), $nama_file);

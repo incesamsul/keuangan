@@ -97,11 +97,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <img src="" id="previewUpload" class="img-thumbnail" style="width:100%">
+                    <embed src="" id="previewUpload" class="thumbnail" style="width:100%">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
+                    {{-- <button type="button" class="btn btn-primary">Understood</button> --}}
                 </div>
             </div>
         </div>
