@@ -44,11 +44,11 @@
           <table style="width: 100%">
             <tr>
               <td>
-                <a class="nav-link" href="{{ URL::to('/bantuan') }}"><i
+                <a href="{{ URL::to('/bantuan') }}"><i
                   class="fas fa-question-circle"></i> <span>Bantuan</span></a>
               </td>
               <td>
-                <a href="#">Forgot password ?</a>
+                <a href="{{ URL::to('/passwords') }}">Forgot password ?</a>
               </td>
             </tr>
           </table>
