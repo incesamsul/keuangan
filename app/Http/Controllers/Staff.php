@@ -328,8 +328,8 @@ class Staff extends Controller
             'id_pemasok' => $request->pemasok,
             'id_pelanggan' => $request->pelanggan,
             'id_periode' => getPeriodeAktif()->id_periode,
-            'debit' => $request->debit,
-            'kredit' => $request->kredit,
+            'debit' => intval(preg_replace('/[^\d.]/', '', $request->debit)),
+            'kredit' => intval(preg_replace('/[^\d.]/', '', $request->kredit)),
             'file' => $nama_file,
         ]);
 
