@@ -34,6 +34,7 @@ integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0
 
 <!-- Template JS File -->
 <script src="{{ asset('stisla/assets/js/scripts.js') }}"></script>
+<script src="{{ asset('js/input_format_number.js') }}"></script>
 <script src="{{ asset('stisla/assets/js/custom.js') }}"></script>
 
 <!-- Page Specific JS File -->

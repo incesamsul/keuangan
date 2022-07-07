@@ -180,11 +180,11 @@
                         </div>
                         <div class="form-group">
                             <label for="debit">Debit</label>
-                            <input type="text" class="form-control uang" name="debit" id="debit" >
+                            <input  type="text" class="form-control input_format_number" name="debit" id="debit" >
                         </div>
                         <div class="form-group">
                             <label for="kredit">Kredit</label>
-                            <input type="text" class="form-control" name="kredit" id="kredit">
+                            <input type="text" class="form-control input_format_number" name="kredit" id="kredit">
                         </div>
 
                         <div class="form-group">
@@ -217,16 +217,6 @@
 
 @endsection
 @section('script')
-        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.maskMoney.min.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function(){
-
-                // Format mata uang.
-                $( '#uang' ).maskMoney({prefix:'Rp. ', thousand:'.', decimal:'.', precision:0});
-
-            })
-        </script>
     <script>
 
         $('#filter-tahun').on('click',function(){
@@ -290,29 +280,13 @@
             $('#keterangan').val($(this).find(':selected').data('keterangan'));
         });
 
+
         // $('#akun').on('change',function(){
         //   $('#reff').val($(this).find(':selected').data('reff'));
         //   $('#keterangan').val($(this).find(':selected').data('keterangan'));
         // });
 
-        document.querySelectorAll('input[type-currency='IDR']').forEach((element) => {
-            element.addEventListener('keyup', function(e) {
-                let cursorPostion = this.selectionStart;
-                let value = parseInt(this.value.replace(/[^,\d]/g, ''));
-                let originalLenght = this.value.length;
-                if (isNaN(value)) {
-                    this.value = "";
-                } else {
-                    this.value = value.toLocaleString('id-ID', {
-                        currency: 'IDR',
-                        style: 'currency',
-                        minimumFractionDigits: 0
-                    })
-                    cursorPostion = this.value.length - originalLenght + cursorPostion;
-                    this.setSelectionRange(cursorPostion, cursorPostion);
-                }
-            });
-        });
+
     </script>
 
     @push('script')
