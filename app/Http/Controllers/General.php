@@ -21,12 +21,17 @@ class General extends Controller
         $this->userModel = new User();
     }
 
-    public function dashboard()
+    public function dashboard($bulan=null)
     {
+        if(!$bulan){
+            $bulan = Date('m');
+        }
+
         $data['neracasaldo'] = NeracaSaldo::all();
         $data['akun'] = Akun::all();
         $data['bukubesar'] = BukuBesar::all();
         $data['periode'] = Periode::all();
+        $data['bulan'] = $bulan;
         return view('pages.dashboard.index', $data);
     }
 

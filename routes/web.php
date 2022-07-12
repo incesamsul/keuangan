@@ -43,6 +43,7 @@ Route::group(['middleware' => ['guest']], function () {
 Route::group(['middleware' => ['auth', 'ceklevel:Administrator,staff,pimpinan']], function () {
 
     Route::get('/dashboard', [General::class, 'dashboard']);
+    Route::get('/dashboard/{bulan}', [General::class, 'dashboard']);
     Route::get('/profile', [General::class, 'profile']);
     Route::post('/ubah_sandi', [General::class, 'ubahSandi']);
 
