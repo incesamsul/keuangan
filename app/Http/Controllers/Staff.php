@@ -146,6 +146,16 @@ class Staff extends Controller
         return view('staff.laporan_neraca', $data);
     }
 
+    public function laporan_per_proyek()
+    {
+        $data['jurnal'] = Jurnal::where('id_periode',getPeriodeAktif()->id_periode)->whereNotNull('id_pelanggan')->groupBy('id_pelanggan')->get()  ;
+        // $data['jurnal'] = Jurnal::groupBy('no_bukti')->get();
+        $data['akun'] = Akun::all();
+        $data['pelanggan'] = Pelanggan::all();
+        $data['pemasok'] = Pemasok::all();
+        return view('staff.laporan_per_proyek', $data);
+    }
+
     public function cetakNeracaSaldo()
     {
         $data['neracasaldo'] = NeracaSaldo::all();

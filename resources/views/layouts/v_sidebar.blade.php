@@ -88,6 +88,10 @@
                         <li id="liManajemenPengguna"><a class="nav-link" href="/staff/laporan_neraca">Laporan
                                 Neraca</a></li>
                     </ul>
+                    <ul class="dropdown-menu">
+                        <li id="liManajemenPengguna"><a class="nav-link" href="/staff/laporan_per_proyek">Laporan
+                                per proyek</a></li>
+                    </ul>
                 </li>
                 {{-- END OF MENU STAFF --}}
             @endif

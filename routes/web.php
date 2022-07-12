@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/postlogin', [LoginController::class, 'postLogin']);
 Route::get('/logout', [LoginController::class, 'logout']);
-
+Route::get('/bantuan', [General::class, 'bantuan']);
 
 
 Route::get('/tentang_aplikasi', [Home::class, 'tentangAplikasi']);
@@ -45,7 +45,6 @@ Route::group(['middleware' => ['auth', 'ceklevel:Administrator,staff,pimpinan']]
     Route::get('/dashboard', [General::class, 'dashboard']);
     Route::get('/profile', [General::class, 'profile']);
     Route::post('/ubah_sandi', [General::class, 'ubahSandi']);
-    Route::get('/bantuan', [General::class, 'bantuan']);
 
     Route::post('/ubah_foto_profile', [General::class, 'ubahFotoProfile']);
     Route::post('/ubah_role', [General::class, 'ubahRole']);
@@ -87,6 +86,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:staff,pimpinan']], function () 
         Route::get('/laba_rugi', [Staff::class, 'laba_rugi']);
         Route::get('/laporan_modal', [Staff::class, 'laporan_modal']);
         Route::get('/laporan_neraca', [Staff::class, 'laporan_neraca']);
+        Route::get('/laporan_per_proyek', [Staff::class, 'laporan_per_proyek']);
 
         Route::get('/', 'Staff@jurnal')->name('root');
         Route::get('/jurnal/{id}/edit', 'Staff@update')->name('jurnal.update');
