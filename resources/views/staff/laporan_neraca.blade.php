@@ -238,7 +238,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($item->nama_akun == "Modal Tn. A")
+                                    @if ($item->nama_akun == "Modal CV TIP")
                                         Rp. {{ number_format($laporanModal) }}
                                         <?php
                                         $totalKredit += $laporanModal;
@@ -311,7 +311,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($item->nama_akun == "Modal Tn. A")
+                                    @if ($item->nama_akun == "Modal CV TIP")
                                         Rp. {{ number_format($laporanModal) }}
                                         <?php
                                         $totalKredit += $laporanModal;

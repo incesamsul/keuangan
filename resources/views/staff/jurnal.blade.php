@@ -180,7 +180,7 @@
                         </div>
                         <div class="form-group">
                             <label for="debit">Debit</label>
-                            <input  type="text" class="form-control input_format_number" name="debit" id="debit" >
+                            <input type="text" class="form-control input_format_number" name="debit" id="debit" >
                         </div>
                         <div class="form-group">
                             <label for="kredit">Kredit</label>

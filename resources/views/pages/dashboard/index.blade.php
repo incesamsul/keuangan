@@ -5,8 +5,9 @@
 $laba = 0;
 $rugi = 0;
 $kas = 0;
+$bank = 0;
 $piutang = 0;
-$hutang = 0;
+$utang = 0;
 $modal = 0;
 $pendapatan = 0;
 ?>
@@ -246,7 +247,7 @@ $laporanModal = 0;
                             @endif
                         </td>
                         <td>
-                            @if ($item->nama_akun == 'Piutang Usaha')
+                            @if ($item->nama_akun == 'Piutang')
                                 <?php
                                     $piutang = App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->where('id_periode',getPeriodeAktif()->id_periode)->sum('debit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->where('id_periode',getPeriodeAktif()->id_periode)->sum('kredit');
                                 ?>
@@ -256,7 +257,12 @@ $laporanModal = 0;
                                     $kas = App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->where('id_periode',getPeriodeAktif()->id_periode)->sum('debit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->where('id_periode',getPeriodeAktif()->id_periode)->sum('kredit');
                                 ?>
                             @endif
-                            @if ($item->nama_akun == "Modal Tn. A")
+                            @if ($item->nama_akun == 'Bank')
+                                <?php
+                                    $bank = App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->where('id_periode',getPeriodeAktif()->id_periode)->sum('debit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->where('id_periode',getPeriodeAktif()->id_periode)->sum('kredit');
+                                ?>
+                            @endif
+                            @if ($item->nama_akun == "Modal CV TIP")
                                 Rp. {{ number_format($laporanModal) }}
                                 <?php
                                 $totalKredit += $laporanModal;
@@ -319,9 +325,9 @@ $laporanModal = 0;
                         <td>{{ $item->no_akun }}</td>
                         <td>{{ $item->nama_akun }}</td>
                         <td>
-                            @if ($item->nama_akun == 'Hutang')
+                            @if ($item->nama_akun == 'Utang')
                                 <?php
-                                    $hutang = App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->where('id_periode',getPeriodeAktif()->id_periode)->sum('kredit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->where('id_periode',getPeriodeAktif()->id_periode)->sum('debit');
+                                    $utang = App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->where('id_periode',getPeriodeAktif()->id_periode)->sum('kredit') - App\Models\Jurnal::all()->where('id_akun', $item->id_akun)->where('id_periode',getPeriodeAktif()->id_periode)->sum('debit');
                                 ?>
                             @endif
                             @if (substr($item->no_akun,0,1) == 6)
@@ -334,7 +340,7 @@ $laporanModal = 0;
                             @endif
                         </td>
                         <td>
-                            @if ($item->nama_akun == "Modal Tn. A")
+                            @if ($item->nama_akun == "Modal CV TIP")
                                 Rp. {{ number_format($laporanModal) }}
                                 <?php
                                 $totalKredit += $laporanModal;
@@ -395,6 +401,22 @@ $laporanModal = 0;
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
+                        <h4>Bank</h4>
+                    </div>
+                    <div class="card-body">
+
+                        <p class="mt-3 ">{{ "Rp. " .number_format($bank) }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card card-statistic-2">
+                <div class="card-icon shadow-warning bg-warning">
+                    <i class="fas fa-receipt"></i>
+                </div>
+                <div class="card-wrap">
+                    <div class="card-header">
                         <h4>Piutang</h4>
                     </div>
                     <div class="card-body">
@@ -415,7 +437,7 @@ $laporanModal = 0;
                     </div>
                     <div class="card-body">
 
-                        <p class="mt-3 ">{{ "Rp. " .number_format($hutang) }}</p>
+                        <p class="mt-3 ">{{ "Rp. " .number_format($utang) }}</p>
                     </div>
                 </div>
             </div>
