@@ -6,7 +6,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CV TRITAMA INTI PERSADA !</title>
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/login.css') }}" /> --}}
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
   </head>
   <body>
@@ -61,7 +62,7 @@
                         </div>
                       </div>
                     </div>
-
+{{-- 
           <div class="row my-5 text-left" style="text-align: left !important;">
               <div class="col-sm-12">
                 <p>Sistem informasi akuntansi ini merupakan suatu sistem yang mengumpulkan menyimpan dan mengelola serta penyampaian informasi data keuangan atau akuntansi kepada pihak yang berkepentingan dalam pengambilan keputusan</p>
@@ -73,7 +74,7 @@
                 <p> Tiga pimpinan yang memeriksa atau melihat informasi keuangan yang telah dikelola oleh staf</p>
                 <p> Login pada akses admin staf dan pimpinan dengan memasukkan nama yang telah diinputkan oleh admin pada kolom username dan untuk kolom password default password email yang diinputkan oleh admin</p>
               </div>
-          </div>
+          </div> --}}
           <table style="width: 100%;margin-top:15px;">
             <tr>
               <td>
@@ -85,7 +86,8 @@
         </form>
       </div>
     </div>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" 
+    type="text/javascript" src="js/main.js"></script>
   </body>
 </html>
 
