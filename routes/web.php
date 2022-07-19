@@ -8,6 +8,7 @@ use App\Http\Controllers\General;
 
 use App\Http\Controllers\Staff;
 use App\Http\Controllers\Pimpinan;
+use App\Http\Controllers\LupaKataSandi;
 
 use App\Http\Controllers\UserController;
 
@@ -29,6 +30,9 @@ use Illuminate\Support\Facades\Route;
 Route::post('/postlogin', [LoginController::class, 'postLogin']);
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/bantuan', [General::class, 'bantuan']);
+Route::get('/lupa_kata_sandi', [LupaKataSandi::class, 'index']);
+Route::get("/lupa_kata_sandi/{response}", [LupaKataSandi::class, "index"]);
+Route::post('/kirim_email_reset', [LupaKataSandi::class, 'kirimKonfirmasiEmail']);
 
 
 Route::get('/tentang_aplikasi', [Home::class, 'tentangAplikasi']);

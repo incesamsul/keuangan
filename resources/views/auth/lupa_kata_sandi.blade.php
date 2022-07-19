@@ -15,32 +15,37 @@
               <img src="{{ asset('stisla/assets/img/logo.jpg') }}" />
             </div>
             <div class="login-container">
-                <form action="{{ URL::to('/postlogin') }}" method="POST">
+                <form action="{{ URL::to('/kirim_email_reset') }}" method="POST">
                     @csrf
                     {{-- <img class="avator" src="{{ asset('stisla/assets/img/logo-min.jpg') }}" /> --}}
-                    <h2>TRITAMA INTI PERSADA</h2>
+                    <h2>Lupa password</h2>
+                    @if ($response)
+                    @if ($response == 200)
+                    <p class="m-0 mt-3 p-0 text-success">Email reset password telah dikirim ke email anda, <span class="text-warning">Jika email tidak masuk periksa email spam</span></p>
+                    @elseif ($response == 500)
+                    <p class="m-0 mt-3 p-0 text-danger">Terjadi kesalahan ...</p>
+                    @else
+                    @endif
+                    @endif
+                    @if (session('success'))
+                    <p class="m-0 mt-3 p-0 text-success">{{ session('success') }}</p>
+                    @endif
+                    @if (session('error'))
+                    <p class="m-0 mt-3 p-0 text-danger">{{ session('error') }}</p>
+                    @endif
                     @if (session('fail'))
                     <p style="color: red;" class="text-danger">{{ session('fail') }}</p>
                     @endif
           <div class="input-div" one>
             <div class="i">
-              <i class="fas fa-user"></i>
+              <i class="fas fa-envelope"></i>
             </div>
             <div>
               {{-- <h5>Username</h5> --}}
-              <input class="input" type="text" name="name" placeholder="Username"/>
+              <input class="input" type="email" name="email" placeholder="Email ...."/>
             </div>
           </div>
-          <div class="input-div" two>
-            <div class="i">
-              <i class="fas fa-lock"></i>
-            </div>
-            <div>
-              {{-- <h5>password</h5> --}}
-              <input class="input" type="password" name="password" placeholder="Password"/>
-            </div>
-          </div>
-          <input type="submit" class="btn" value="Login" />
+          <input type="submit" class="btn" value="Kirim" />
           <table style="width: 100%">
             <tr>
               <td>
@@ -48,7 +53,7 @@
                   class="fas fa-question-circle"></i> <span>Bantuan</span></a>
               </td>
               <td>
-                <a href="{{ URL::to('/lupa_kata_sandi') }}">Forgot password ?</a>
+                <a href="{{ URL::to('/login') }}">Login ?</a>
               </td>
             </tr>
           </table>
