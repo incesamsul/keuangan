@@ -5,11 +5,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
     <title>CV TRITAMA INTI PERSADA</title>
-    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('css/login.css') }}"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('css/login.css') }}" /> --}}
@@ -18,19 +18,21 @@
   </head>
   <body>
       <div class="container mt-5">
-          <h3 class="mt-5">Bantuan</h3>
+            <div class="row">
+                <div class="col-sm-6 offset-sm-3">
+                    <h3 class="mt-5">Bantuan</h3>
           <p class="mb-5">informasi bantuan penggunaan SIA CV TRITAMA INTI PERSADA</p>
           <div class="accordion" id="accordionExample">
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingOne">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Login 
+                  Login
                 </button>
               </h2>
               <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                  <a href="{{ URL::to('/login') }}">Login</a> untuk mengakses pada setiap halaman menggunakan nama dan email pada username 
-                  dan password yg sebelumnya di inputkan oleh admin  
+                  <a href="{{ URL::to('/login') }}">Login</a> untuk mengakses pada setiap halaman menggunakan nama dan email pada username
+                  dan password yg sebelumnya di inputkan oleh admin
                 </div>
               </div>
             </div>
@@ -44,7 +46,7 @@
                 <div class="accordion-body">
                   Admin merupakan seorang yang menambahkan, mengedit dan menghapus hak akses pengguna kepada pengguna aplikasi yang bersangkutan
                   dengan informasi keuangan atau akuntansi perusahaan<br>
-                  
+
                   <br>langkah-langkah
                    1. buka halaman manajemen Pengguna
                    2. klik tombol "+" dan muncul form tambah pengguna
@@ -68,8 +70,8 @@
                    1. melakukan penginputan data akun yang digunakan untuk setiap transaksi
                    2. melakukan penginputan data pelanggan dan pemasok yang berhubungan dengan perusahaan
                    3. melakukan penginputan transaksi dengan klik tombol "+" pada halaman Jurnal
-                   4. setelah itu muncul form tambah transaksi dengan menginputkan tanggal transaksi, 
-                      memilih atau tidak memilih pihak pemasok atau pelanggan 
+                   4. setelah itu muncul form tambah transaksi dengan menginputkan tanggal transaksi,
+                      memilih atau tidak memilih pihak pemasok atau pelanggan
                    5. memilih akun yang terkait dengan transaksi perusahaan
                    6. memasukkan saldo transaksi, dan memasukkan bukti transaksi yang terjadi
                    7. klik tombol "tambah"
@@ -96,6 +98,8 @@
                    3. dapat melihat laporan keuangan periode pada halaman laporan keuangan
                 </div>
               </div>
+            </div>
+                </div>
             </div>
           </div>
         </body>
