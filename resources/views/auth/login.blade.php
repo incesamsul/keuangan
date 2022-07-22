@@ -48,7 +48,7 @@
                   class="fas fa-question-circle"></i>Bantuan</a>
               </td>
               <td>
-                <a href="{{ URL::to('/lupa_kata_sandi') }}">Forgot password ?</a>
+                <a href="{{ URL::to('/lupa_kata_sandi') }}">Forgot Password ?</a>
               </td>
             </tr>
           </table>

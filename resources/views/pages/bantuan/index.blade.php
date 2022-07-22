@@ -19,7 +19,7 @@
   <body>
       <div class="container mt-5">
             <div class="row">
-                <div class="col-sm-6 offset-sm-3">
+                <div class="col-sm-7 offset-sm-2">
                     <h3 class="mt-5">Bantuan</h3>
           <p class="mb-5">informasi bantuan penggunaan SIA CV TRITAMA INTI PERSADA</p>
           <div class="accordion" id="accordionExample">
@@ -45,13 +45,13 @@
               <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   Admin merupakan seorang yang menambahkan, mengedit dan menghapus hak akses pengguna kepada pengguna aplikasi yang bersangkutan
-                  dengan informasi keuangan atau akuntansi perusahaan<br>
+                  dengan informasi keuangan atau akuntansi perusahaan.<br>
 
                   <br>langkah-langkah
-                   1. buka halaman manajemen Pengguna
-                   2. klik tombol "+" dan muncul form tambah pengguna
-                   3. memasukkan nama, email dan tipe pengguna "admin, staff, dan pimpinan"
-                   4. klik tombol "tambah"
+                  <br>1. buka halaman manajemen Pengguna
+                  <br>2. klik tombol "+" dan muncul form tambah pengguna
+                  <br>3. memasukkan nama, email dan tipe pengguna "admin, staff, dan pimpinan"
+                  <br>4. klik tombol "tambah"
                 </div>
               </div>
             </div>
@@ -64,20 +64,20 @@
               <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   staff merupakan seorang pekerja yang memiliki tugas untuk melakukan perhitungan terhadap finansial perusahaan. Staff
-                  melakukan penginputan semua transaksi keuangan yang terjadi pada perusahaan dalam program.
+                  melakukan penginputan semua transaksi keuangan yang terjadi pada perusahaan dalam program.<br>
 
-                  langka-langkah
-                   1. melakukan penginputan data akun yang digunakan untuk setiap transaksi
-                   2. melakukan penginputan data pelanggan dan pemasok yang berhubungan dengan perusahaan
-                   3. melakukan penginputan transaksi dengan klik tombol "+" pada halaman Jurnal
-                   4. setelah itu muncul form tambah transaksi dengan menginputkan tanggal transaksi,
+                  <br>langka-langkah
+                  <br>1. melakukan penginputan data akun yang digunakan untuk setiap transaksi
+                  <br>2. melakukan penginputan data pelanggan dan pemasok yang berhubungan dengan perusahaan
+                  <br>3. melakukan penginputan transaksi dengan klik tombol "+" pada halaman Jurnal
+                  <br>4. setelah itu muncul form tambah transaksi dengan menginputkan tanggal transaksi,
                       memilih atau tidak memilih pihak pemasok atau pelanggan
-                   5. memilih akun yang terkait dengan transaksi perusahaan
-                   6. memasukkan saldo transaksi, dan memasukkan bukti transaksi yang terjadi
-                   7. klik tombol "tambah"
-                   8. dapat melihat pengelompokan akun dan saldo akhir per-akun dan utang serta piutang pada halaman buku besar
-                   9. dapat melihat keseimbangan saldo pada halaman neraca saldo
-                   10. dapat melihat laporan keuangan periode
+                  <br>5. memilih akun yang terkait dengan transaksi perusahaan
+                  <br>6. memasukkan saldo transaksi, dan memasukkan bukti transaksi yang terjadi
+                  <br>7. klik tombol "tambah"
+                  <br>8. dapat melihat pengelompokan akun dan saldo akhir per-akun dan utang serta piutang pada halaman buku besar
+                  <br>9. dapat melihat keseimbangan saldo pada halaman neraca saldo
+                  <br>10. dapat melihat laporan keuangan periode
                 </div>
               </div>
             </div>
@@ -90,12 +90,12 @@
               <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   Pimpinan merupakan seorang yang mempunyai tanggung jawab penuh dalam mengembangkan perusahaan juga harus mampu
-                  menampung aspirasi dari karyawan sehingga menghasilkan keputusan yang mewakili pemikiran banyak orang.
+                  menampung aspirasi dari karyawan sehingga menghasilkan keputusan yang mewakili pemikiran banyak orang.<br>
 
-                  langka-langkah
-                   1. dapat melihat saldo beberapa akun yg ada pada dashboard
-                   2. dapat melihat laba atau rugi setiap bulan dengan memilih bulan apa yg akan dilihat dan refresh
-                   3. dapat melihat laporan keuangan periode pada halaman laporan keuangan
+                  <br>langka-langkah
+                  <br>1. dapat melihat saldo beberapa akun yg ada pada dashboard
+                  <br>2. dapat melihat laba atau rugi setiap bulan dengan memilih bulan apa yg akan dilihat dan refresh
+                  <br>3. dapat melihat laporan keuangan periode pada halaman laporan keuangan
                 </div>
               </div>
             </div>

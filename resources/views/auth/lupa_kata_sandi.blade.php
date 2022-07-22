@@ -23,7 +23,7 @@
                     @if ($response == 200)
                     <p class="m-0 mt-3 p-0 text-success">Email reset password telah dikirim ke email anda, <span class="text-warning">Jika email tidak masuk periksa email spam</span></p>
                     @elseif ($response == 500)
-                    <p class="m-0 mt-3 p-0 text-danger">Terjadi kesalahan ...</p>
+                    <p class="m-0 mt-3 p-0 text-danger">Terjadi kesalahan</p>
                     @else
                     @endif
                     @endif
@@ -42,7 +42,7 @@
             </div>
             <div>
               {{-- <h5>Username</h5> --}}
-              <input class="input" type="email" name="email" placeholder="Email ...."/>
+              <input class="input" type="email" name="email" placeholder="Email"/>
             </div>
           </div>
           <input type="submit" class="btn" value="Kirim" />
