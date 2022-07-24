@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use phpDocumentor\Reflection\Types\Null_;
 use PhpParser\Node\Expr\FuncCall;
-
+use Twilio\Rest\Client;
 use function PHPUnit\Framework\isNull;
 
 
@@ -24,12 +24,40 @@ use function PHPUnit\Framework\isNull;
 //     'file' => 'required|file|max:2000', // max 2MB
 // ]);
 
-function getPeriodeAktif(){
-    return Periode::where('is_active','1')->first();
+function sendEmail($message, $noWa)
+{
+
+
+    // Update the path below to your autoload.php,
+    // see https://getcomposer.org/doc/01-basic-usage.md
+
+    $sid    = "AC80c49cc0f6ee0b7b01a332c886df472a";
+    $token  = "82ca2c5faf79749ef7ddc73a5da29cfd";
+    $twilio = new Client($sid, $token);
+
+    $message = $twilio->messages
+        ->create(
+            "whatsapp:+" . $noWa, // to
+            array(
+                "from" => "whatsapp:+14155238886",
+                "body" => $message
+            )
+        );
+
+    // print($message->sid);
+    // return redirect()->back()->with('success', 'berhasil terkirim');
 }
 
 
-function has_next($array) {
+
+function getPeriodeAktif()
+{
+    return Periode::where('is_active', '1')->first();
+}
+
+
+function has_next($array)
+{
     if (is_array($array)) {
         if (next($array) === false) {
             return false;
@@ -40,7 +68,8 @@ function has_next($array) {
         return false;
     }
 }
-function has_prev($array) {
+function has_prev($array)
+{
     if (is_array($array)) {
         if (prev($array) === false) {
             return false;

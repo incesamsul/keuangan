@@ -15,18 +15,11 @@
               <img src="{{ asset('stisla/assets/img/logo.jpg') }}" />
             </div>
             <div class="login-container">
-                <form action="{{ URL::to('/kirim_email_reset') }}" method="POST">
+                <form action="{{ URL::to('/post_reset_password/'.$kodeReset) }}" method="POST">
                     @csrf
                     {{-- <img class="avator" src="{{ asset('stisla/assets/img/logo-min.jpg') }}" /> --}}
-                    <h2>Lupa password</h2>
-                    @if ($response)
-                    @if ($response == 200)
-                    <p class="m-0 mt-3 p-0 text-success">kode reset password telah dikirim ke whatsap anda anda, <span class="text-warning">Jika email tidak masuk periksa email spam</span></p>
-                    @elseif ($response == 500)
-                    <p class="m-0 mt-3 p-0 text-danger">Terjadi kesalahan</p>
-                    @else
-                    @endif
-                    @endif
+                    <h2>Reset Password</h2>
+                    
                     @if (session('success'))
                     <p class="m-0 mt-3 p-0 text-success">{{ session('success') }}</p>
                     @endif
@@ -42,7 +35,25 @@
             </div>
             <div>
               {{-- <h5>Username</h5> --}}
-              <input class="input" type="nomor_wa" name="nomor_wa" placeholder="Nomor whatsapp"/>
+              <input class="input" type="text" name="nomor_wa" placeholder="Nomor whatsapp"/>
+            </div>
+          </div>
+          <div class="input-div" one>
+            <div class="i">
+              <i class="fas fa-lock"></i>
+            </div>
+            <div>
+              {{-- <h5>Username</h5> --}}
+              <input class="input" type="text" name="password" placeholder="Password"/>
+            </div>
+          </div>
+          <div class="input-div" one>
+            <div class="i">
+              <i class="fas fa-lock"></i>
+            </div>
+            <div>
+              {{-- <h5>Username</h5> --}}
+              <input class="input" type="text" name="konfirmasi_password" placeholder="Konfirmasi password"/>
             </div>
           </div>
           <input type="submit" class="btn" value="Kirim" />

@@ -33,8 +33,9 @@ Route::get('/bantuan', [General::class, 'bantuan']);
 Route::get('/lupa_kata_sandi', [LupaKataSandi::class, 'index']);
 Route::get("/lupa_kata_sandi/{response}", [LupaKataSandi::class, "index"]);
 Route::post('/kirim_email_reset', [LupaKataSandi::class, 'kirimKonfirmasiEmail']);
-Route::post('change-password',[Admin::class,'changePassword'])->name('adminChangePassword');
-
+Route::post('change-password', [Admin::class, 'changePassword'])->name('adminChangePassword');
+Route::get('/reset-password/{kode_reset}', [LupaKataSandi::class, "getResetPassword"]);
+Route::post('/post_reset_password/{kode_reset}', [LupaKataSandi::class, "resetPassword"]);
 
 Route::get('/tentang_aplikasi', [Home::class, 'tentangAplikasi']);
 

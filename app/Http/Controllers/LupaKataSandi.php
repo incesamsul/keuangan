@@ -24,9 +24,9 @@ class LupaKataSandi extends Controller
 
     public function kirimKonfirmasiEmail(Request $request)
     {
-        $user = User::whereEmail($request->email)->first();
+        $user = User::where('nomor_wa', $request->nomor_wa)->first();
         if (!$user) {
-            return redirect()->back()->with(['error' => 'email tidak dikenali']);
+            return redirect()->back()->with(['error' => 'Nomor wangsaf tidak dikenali']);
         }
 
         $kodeReset = Str::random(200);
@@ -35,17 +35,19 @@ class LupaKataSandi extends Controller
             'reset_code' => $kodeReset
         ]);
 
-
-        return Redirect::to('https://reset-password.alterga.com/send/' . $user->email . '/' . $kodeReset);
+        $pesan = "127.0.0.1:8000/reset-password/" . $kodeReset;
+        sendEmail($pesan, $request->nomor_wa);
+        return redirect()->back()->with('success', 'berhasil terkirim');
+        // return Redirect::to('https://reset-password.alterga.com/send/' . $user->email . '/' . $kodeReset);
     }
 
     public function getResetPassword($kodeReset)
     {
         $passwordResetData = PasswordResets::where('reset_code', $kodeReset)->first();
         if (!$passwordResetData || Carbon::now()->subMinutes(10) > $passwordResetData->created_at) {
-            return redirect()->route('lupa-kata-sandi')->with('error', 'link reset password tidak valid atau sudah expired');
+            return redirect('/lupa_kata_sandi')->with('error', 'link reset password tidak valid atau sudah expired');
         } else {
-            return view('auth.reset_password', compact('kodeReset'));
+            return view('auth.rest_password', compact('kodeReset'));
         }
     }
 
@@ -53,11 +55,11 @@ class LupaKataSandi extends Controller
     {
         $passwordResetData = PasswordResets::where('reset_code', $kodeReset)->first();
         if (!$passwordResetData || Carbon::now()->subMinutes(10) > $passwordResetData->created_at) {
-            return redirect()->route('lupa-kata-sandi')->with('error', 'link reset password tidak valid atau sudah expired');
+            return redirect('/lupa_kata_sandi')->with('error', 'link reset password tidak valid atau sudah expired');
         } else {
             $user = User::find($passwordResetData->user_id);
-            if ($user->email != $request->email) {
-                return redirect()->back()->with('error', 'Email tidak sesuai');
+            if ($user->nomor_wa != $request->nomor_wa) {
+                return redirect()->back()->with('error', 'nomor tidak sesuai');
             } else {
                 if ($request->password == $request->konfirmasi_password) {
                     PasswordResets::where('reset_code', $kodeReset)->delete();
