@@ -61,7 +61,7 @@ class Staff extends Controller
         if (!$tahun) {
             $tahun = Date('Y');
         }
-        $data['jurnal'] = Jurnal::where('id_periode',getPeriodeAktif()->id_periode)->get();
+        $data['jurnal'] = Jurnal::where('id_periode', getPeriodeAktif()->id_periode)->get();
         // $data['jurnal'] = Jurnal::groupBy('no_bukti')->get();
         $data['akun'] = Akun::all();
         $data['pelanggan'] = Pelanggan::all();
@@ -148,7 +148,7 @@ class Staff extends Controller
 
     public function laporan_per_proyek()
     {
-        $data['jurnal'] = Jurnal::where('id_periode',getPeriodeAktif()->id_periode)->whereNotNull('id_pelanggan')->groupBy('id_pelanggan')->get()  ;
+        $data['jurnal'] = Jurnal::where('id_periode', getPeriodeAktif()->id_periode)->whereNotNull('id_pelanggan')->groupBy('id_pelanggan')->get();
         // $data['jurnal'] = Jurnal::groupBy('no_bukti')->get();
         $data['akun'] = Akun::all();
         $data['pelanggan'] = Pelanggan::all();
@@ -450,8 +450,8 @@ class Staff extends Controller
                 'id_akun' => $request->akun,
                 'id_pemasok' => $pemasok,
                 'id_pelanggan' => $pelanggan,
-                'debit' => $request->debit,
-                'kredit' => $request->kredit,
+                'debit' => intval(preg_replace('/[^\d.]/', '', $request->debit)),
+                'kredit' => intval(preg_replace('/[^\d.]/', '', $request->kredit)),
             ]);
 
         return redirect()->back()->with('message', 'Data pelanggan Berhasil di Update');
