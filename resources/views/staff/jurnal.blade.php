@@ -184,7 +184,7 @@
                         </div>
                         <div class="form-group">
                             <label for="kredit">Kredit</label>
-                            <input type="text" class="form-control input_format_number" name="kredit" id="kredit">
+                            <input type="text" class="form-control input_format_number2" name="kredit" id="kredit">
                         </div>
 
                         <div class="form-group">
