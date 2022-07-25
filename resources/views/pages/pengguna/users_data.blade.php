@@ -4,6 +4,7 @@
     <td>{{ $loop->iteration }}</td>
     <td>{{ $p->name }}</td>
     <td>{{ $p->email }}</td>
+    <td>{{ $p->nomor_wa }}</td>
     <td>{{ $p->role }}</td>
     <td class="option">
         <div class="btn-group dropleft btn-option">

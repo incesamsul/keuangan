@@ -23,6 +23,7 @@
                                 <th width="5%" class="sorting" data-sorting_type="asc" data-column_name="id" style="cursor: pointer">ID <span id="id_icon"></span></th>
                                 <td>Nama</td>
                                 <td>Email</td>
+                                <td>Nomor Whatsapp</td>
                                 <td>Tipe Pengguna</td>
                                 <td></td>
                             </tr>
@@ -84,6 +85,10 @@
                     <div class="form-group">
                         <label for="email">email</label>
                         <input type="text" class="form-control" name="email" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Nomor Whatsapp</label>
+                        <input type="text" class="form-control" name="nomor_wa" id="nomor_wa">
                     </div>
                     <div class="form-group">
                         <label>Role</label>
@@ -196,6 +201,7 @@
             let dataPengguna = $(this).data('pengguna');
             $('#nama').val(dataPengguna.name);
             $('#email').val(dataPengguna.email);
+            $('#nomor_wa').val(dataPengguna.nomo_wa);
             $('#tipe-pengguna').val(dataPengguna.role);
             $('#id').val(dataPengguna.id);
             $('#ModalLabel').html('Ubah Pengguna');

@@ -52,6 +52,7 @@ class Admin extends Controller
                     ->where('role', '!=', 'Admin')
                     ->Where('name', 'like', '%' . $query . '%')
                     ->Where('email', 'like', '%' . $query . '%')
+                    ->Where('nomor_wa', 'like', '%' . $query . '%')
                     ->orderBy($sort_by, $sort_type)
                     ->paginate(5);
             } else {
@@ -60,6 +61,7 @@ class Admin extends Controller
                     ->Where('role', '=', $request->filter)
                     ->Where('name', 'like', '%' . $query . '%')
                     ->Where('email', 'like', '%' . $query . '%')
+                    ->Where('nomor_wa', 'like', '%' . $query . '%')
                     ->orderBy($sort_by, $sort_type)
                     ->paginate(5);
             }
@@ -73,6 +75,7 @@ class Admin extends Controller
         User::create([
             'name' => $request->nama,
             'email' => $request->email,
+            'nomor_wa' => $request->nomor_wa,
             'password' => bcrypt($request->email),
             'role' => $request->tipe_pengguna,
         ]);
@@ -87,6 +90,7 @@ class Admin extends Controller
         $user->update([
             'name' => $request->nama,
             'email' => $request->email,
+            'nomor_wa' => $request->nomor_wa,
             'role' => $request->tipe_pengguna,
         ]);
         return redirect('/admin/pengguna')->with('message', 'Pengguna Berhasil di update');
