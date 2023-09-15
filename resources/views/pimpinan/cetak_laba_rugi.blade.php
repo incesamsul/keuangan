@@ -37,7 +37,7 @@
 </style>
 <body>
     <h1 class="text-center m-0">Laporan <span class="text-main">Laba Rugi</span></h1>
-    <h3 class="text-center">CV TRITAMA INTI PERSADA</h3>
+    <h3 class="text-center">CV Toko Andalas Jaya</h3>
     <p class="text-center m-0">Dari 1 april 2022 sampai 3 april 2022</p>
 
     <table class="table border-bottom mt-50" cellpadding="10">
@@ -135,7 +135,7 @@
         </tr>
         <tr>
             <td style="width:60%"></td>
-            <td class="text-center"><strong>CV. TRITAMA INTI PERSADA</strong></td>
+            <td class="text-center"><strong>CV. Toko Andalas Jaya</strong></td>
         </tr>
         <tr style="height: 20px">
             <td style="width:60%;height:100px"></td>

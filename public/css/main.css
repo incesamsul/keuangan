@@ -8,42 +8,43 @@ body {
     /* color: black !important; */
 }
 
-#pemasok_wrapper, #pelanggan_wrapper{
-    visibility:hidden ;
-    display:none ;
+#pemasok_wrapper,
+#pelanggan_wrapper {
+    visibility: hidden;
+    display: none;
 }
 
-.show{
-    visibility:visible;
+.bg-main {
+    background-color: #22c0e8 !important;
 }
 
-.pagination > li > a
-{
+.show {
+    visibility: visible;
+}
+
+.pagination>li>a {
     background-color: white;
-    color: #FFA426;
+    color: #65CDF1;
 }
 
-.pagination > li > a:focus,
-.pagination > li > a:hover,
-.pagination > li > span:focus,
-.pagination > li > span:hover
-{
+.pagination>li>a:focus,
+.pagination>li>a:hover,
+.pagination>li>span:focus,
+.pagination>li>span:hover {
     color: #5a5a5a;
     background-color: #eee;
     border-color: #ddd;
 }
 
-.pagination > .active > a
-{
+.pagination>.active>a {
     color: white;
-    background-color: #FFA426 !Important;
-    border: solid 1px #FFA426 !Important;
+    background-color: #65CDF1 !Important;
+    border: solid 1px #65CDF1 !Important;
 }
 
-.pagination > .active > a:hover
-{
-    background-color: #FFA426 !Important;
-    border: solid 1px #FFA426;
+.pagination>.active>a:hover {
+    background-color: #65CDF1 !Important;
+    border: solid 1px #65CDF1;
 }
 
 .my-textarea {
@@ -60,11 +61,11 @@ h3,
 h4,
 h5,
 h6 {
-    color: #FFA426 !important;
+    color: #65CDF1 !important;
 }
 
 .navbar-bg {
-    background-color: #FFA426 !important;
+    background-color: #65CDF1 !important;
 }
 
 textarea {
@@ -84,9 +85,9 @@ body.show-spinner>main {
     /* color: black !important; */
 }
 
-.sidebar-menu li.active a{
+.sidebar-menu li.active a {
     /* font-size: 14px !important; */
-    color: #FFA426 !important;
+    color: #65CDF1 !important;
 }
 
 .sidebar-menu li.menu-header {

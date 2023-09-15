@@ -7,7 +7,7 @@
                     @csrf
                     <ul class="navbar-nav mr-3">
                         <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg collapse-trigger-button"><i class="fas fa-bars"></i></a></li>
-                        <li><p style="font-family: Century Gothic; font-size:17px; color:white; font-weight:bold" >CV TRITAMA INTI PERSADA</p></li>
+                        <li><p style="font-family: Century Gothic; font-size:17px; color:white; font-weight:bold" >CV Toko Andalas Jaya</p></li>
                         <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
                     </ul>
                     <div class="search-element">

@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CV TRITAMA INTI PERSADA</title>
+    <title>CV Toko Andalas Jaya</title>
     <link rel="stylesheet" href="{{ asset('css/login.css') }}" />
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
   </head>
@@ -19,7 +19,7 @@
                     @csrf
                     {{-- <img class="avator" src="{{ asset('stisla/assets/img/logo-min.jpg') }}" /> --}}
                     <h2>Reset Password</h2>
-                    
+
                     @if (session('success'))
                     <p class="m-0 mt-3 p-0 text-success">{{ session('success') }}</p>
                     @endif

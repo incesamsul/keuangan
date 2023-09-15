@@ -13,7 +13,7 @@
             <div class="card ">
                 <div class="card-header d-flex justify-content-between">
                     <h4>Laporan Laba / Rugi</h4>
-                    <a href="{{ URL::to('/staff/cetak_laba_rugi') }}" target="_blank" class="btn btn-warning mt-3">
+                    <a href="{{ URL::to('/staff/cetak_laba_rugi') }}" target="_blank" class="btn bg-main text-white mt-3">
                         <i class="fas fa-print"></i> Cetak
                     </a>
                 </div>
@@ -205,7 +205,7 @@
             <div class="card ">
                 <div class="card-header d-flex justify-content-between">
                     <h4>Laporan Neraca (Aktiva)</h4>
-                    <a href="{{ URL::to('/staff/cetak_neraca') }}" target="_blank" class="btn btn-warning mt-3">
+                    <a href="{{ URL::to('/staff/cetak_neraca') }}" target="_blank" class="btn bg-main text-white mt-3">
                         <i class="fas fa-print"></i> Cetak
                     </a>
                 </div>

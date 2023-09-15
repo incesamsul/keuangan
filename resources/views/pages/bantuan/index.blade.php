@@ -8,7 +8,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
-    <title>CV TRITAMA INTI PERSADA</title>
+    <title>CV Toko Andalas Jaya</title>
     {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('css/login.css') }}"> --}}
@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-sm-7 offset-sm-2">
                     <h3 class="mt-5">Bantuan</h3>
-          <p class="mb-5">informasi bantuan penggunaan SIA CV TRITAMA INTI PERSADA</p>
+          <p class="mb-5">informasi bantuan penggunaan SIA CV Toko Andalas Jaya</p>
           <div class="accordion" id="accordionExample">
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingOne">

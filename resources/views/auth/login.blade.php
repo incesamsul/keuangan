@@ -2,59 +2,61 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CV TRITAMA INTI PERSADA</title>
+    <title>CV Toko Andalas Jaya</title>
     <link rel="stylesheet" href="{{ asset('css/login.css') }}" />
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
-  </head>
-  <body>
-      <div class="container">
-          <div class="img">
-              <img src="{{ asset('stisla/assets/img/logo.jpg') }}" />
-            </div>
-            <div class="login-container">
-                <form action="{{ URL::to('/postlogin') }}" method="POST">
-                    @csrf
-                    {{-- <img class="avator" src="{{ asset('stisla/assets/img/logo-min.jpg') }}" /> --}}
-                    <h2>TRITAMA INTI PERSADA</h2>
-                    @if (session('fail'))
+</head>
+
+<body>
+    <div class="container">
+        <div class="img">
+            <img src="https://www.iconpacks.net/icons/2/free-store-icon-2017-thumb.png" />
+        </div>
+        <div class="login-container">
+            <form action="{{ URL::to('/postlogin') }}" method="POST">
+                @csrf
+                {{-- <img class="avator" src="{{ asset('stisla/assets/img/logo-min.jpg') }}" /> --}}
+                <h2>Toko Andalas Jaya</h2>
+                @if (session('fail'))
                     <p style="color: red;" class="text-danger">{{ session('fail') }}</p>
-                    @endif
-          <div class="input-div" one>
-            <div class="i">
-              <i class="fas fa-user"></i>
-            </div>
-            <div>
-              {{-- <h5>Username</h5> --}}
-              <input class="input" type="text" name="name" placeholder="Username"/>
-            </div>
-          </div>
-          <div class="input-div" two>
-            <div class="i">
-              <i class="fas fa-lock"></i>
-            </div>
-            <div>
-              {{-- <h5>password</h5> --}}
-              <input class="input" type="password" name="password" placeholder="Password"/>
-            </div>
-          </div>
-          <input type="submit" class="btn" value="Login" />
-          <table style="width: 100%">
-            <tr>
-              <td>
-                <a href="{{ URL::to('/bantuan') }}"><i
-                  class="fas fa-question-circle"></i>Bantuan</a>
-              </td>
-              <td>
-                <a href="{{ URL::to('/lupa_kata_sandi') }}">Forgot Password ?</a>
-              </td>
-            </tr>
-          </table>
-        </form>
-      </div>
+                @endif
+                <div class="input-div" one>
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        {{-- <h5>Username</h5> --}}
+                        <input class="input" type="text" name="name" placeholder="Username" />
+                    </div>
+                </div>
+                <div class="input-div" two>
+                    <div class="i">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div>
+                        {{-- <h5>password</h5> --}}
+                        <input class="input" type="password" name="password" placeholder="Password" />
+                    </div>
+                </div>
+                <input type="submit" class="btn" value="Login" />
+                <table style="width: 100%">
+                    <tr>
+                        <td>
+                            <a href="{{ URL::to('/bantuan') }}"><i class="fas fa-question-circle"></i>Bantuan</a>
+                        </td>
+                        <td>
+                            <a href="{{ URL::to('/lupa_kata_sandi') }}">Forgot Password ?</a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
     </div>
     <script type="text/javascript" src="js/main.js"></script>
-  </body>
+</body>
+
 </html>

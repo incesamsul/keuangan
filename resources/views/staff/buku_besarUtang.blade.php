@@ -7,8 +7,8 @@
             <div class="col-lg-12">
                 <div class="card ">
                     <div class="card-header d-flex justify-content-between">
-                                 <h4>Buku Besar Utang</h4>
-        </div>
+                        <h4>Buku Besar Utang</h4>
+                    </div>
                     <div class="card-body">
                         <table id="perUser" class="table table-striped table-bordered" style="width:100%">
                             <thead>
@@ -53,65 +53,6 @@
 
     <!-- Modal -->
     @foreach ($pemasok as $item)
-        <div class="modal fade" id="exampleModal-{{ $item->idid_pemasok}" tabindex="-1"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content ">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Buku Besar Akun</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <table id="" class="table table-striped table-bordered" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th>Tanggal</th>
-                                    <th>Keterangan</th>
-                                    <th>Ref</th>
-                                    {{-- debit kredit jurnal --}}
-                                    <th>Debet</th>
-                                    <th>Kredit</th>
-                                    <th class="text-center">Saldo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (App\Models\Jurnal::all()->where('id_pemasok', $item->id_pemasok)->where('id_periode',getPeriodeAktif()->id_periode) as $ite)
-                                    <tr>
-                                        <td>{{ $ite->tgl_transaksi }}</td>
-                                        <td>{{ $ite->akun->nama_akun }}</td>
-                                        <td>{{ $ite->akun->no_akun }}</td>
-
-                                        <td>{{ 'Rp. ' . number_format($ite->debit) }}</td>
-                                        <td>{{ 'Rp. ' . number_format($ite->kredit) }}</td>
-                                        <td>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th colspan="2"></th>
-                                    <th>total</th>
-                                    <th>
-                                        {{-- sum debit jurnal --}}
-                                        {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_pemasok', $item->id_pemasok)->where('id_periode',getPeriodeAktif()->id_periode)->sum('debit')) }}
-                                    </th>
-                                    <th>
-                                        {{-- sum kredit jurnal --}}
-                                        {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_pemasok', $item->id_pemasok)->where('id_periode',getPeriodeAktif()->id_periode)->sum('kredit')) }}
-                                    </th>
-                                    <th>
-                                        {{ 'Rp. ' .number_format(App\Models\Jurnal::all()->where('id_pemasok', $item->id_pemasok)->where('id_periode',getPeriodeAktif()->id_periode)->sum('debit') - App\Models\Jurnal::all()->where('id_pemasok', $item->id_pemasok)->where('id_periode',getPeriodeAktif()->id_periode)->sum('kredit')) }}
-                                    </th>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
     @endforeach
 @endsection
 @section('script')

@@ -10,11 +10,12 @@
                         {{-- <div class="title-and-filter d-flex flex-row">
 
                             <input id="input-filter-tahun" type="number" min="1900" max="2099" step="1" value="{{ $tahun }}" class="form-control"/>
-                            <button id="filter-tahun" class="btn btn-warning mx-2"><i class="fas fa-sync"></i></button>
+                            <button id="filter-tahun" class="btn bg-main text-white mx-2"><i class="fas fa-sync"></i></button>
                         </div> --}}
                         <!-- Button trigger modal -->
                         <h4>Laporan per proyek</h4>
-                        <button type="button" class="btn btn-tambah btn-warning" data-toggle="modal" data-target="#formModal">
+                        <button type="button" class="btn btn-tambah bg-main text-white" data-toggle="modal"
+                            data-target="#formModal">
                             <i class="fas fa-plus"></i>
                         </button>
                     </div>
@@ -51,15 +52,17 @@
 
                                             <!-- Button trigger modal -->
                                             <button data-upload="{{ asset('data/bukti_transaksi/' . $row->file) }} "
-                                                type="button" class="btn btn-preview-upload btn-primary" data-toggle="modal"
-                                                data-target="#modalView">lihat
+                                                type="button" class="btn btn-preview-upload btn-primary"
+                                                data-toggle="modal" data-target="#modalView">lihat
                                             </button>
 
                                         </td>
                                         <td>
                                             <a href="jurnal/delete/{{ $row->id_jurnal }}" class="btn btn-danger"><i
                                                     class="fas fa-trash"></i> Hapus</a>
-                                            <a data-edit='@json($row)' data-toggle="modal" data-target="#formModal" class="btn btn-primary tombol-edit text-light"><i class="fas fa-pen"></i>Edit</a>
+                                            <a data-edit='@json($row)' data-toggle="modal"
+                                                data-target="#formModal" class="btn btn-primary tombol-edit text-light"><i
+                                                    class="fas fa-pen"></i>Edit</a>
                                             {{-- <a href="" id="editCompany" data-toggle="modal" data-target='#practice_modal' data-id="{{ $row->id }}" ><button class="btn btn-primary"><i class="fas fa-pen"></i>Edit</button></a> --}}
                                         </td>
                                     </tr>
@@ -180,11 +183,13 @@
                         </div>
                         <div class="form-group">
                             <label for="debit">Debit</label>
-                            <input  type="text" class="form-control input_format_number" name="debit" id="debit" >
+                            <input type="text" class="form-control input_format_number" name="debit"
+                                id="debit">
                         </div>
                         <div class="form-group">
                             <label for="kredit">Kredit</label>
-                            <input type="text" class="form-control input_format_number" name="kredit" id="kredit">
+                            <input type="text" class="form-control input_format_number" name="kredit"
+                                id="kredit">
                         </div>
 
                         <div class="form-group">
@@ -206,20 +211,17 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-warning" id="modalBtn"
+                    <button type="submit" class="btn bg-main text-white" id="modalBtn"
                         href="{{ route('jurnal.form') }}">Tambah</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-
 @endsection
 @section('script')
     <script>
-
-        $('#filter-tahun').on('click',function(){
+        $('#filter-tahun').on('click', function() {
             document.location.href = '/staff/jurnal/' + $('#input-filter-tahun').val();
         })
 
@@ -228,17 +230,17 @@
             $('#previewUpload').attr('src', uploadUrl);
         })
 
-        $('.btn-tambah').on('click',function(){
-            $('#formData').attr('action','/staff/tambah_transaksi');
+        $('.btn-tambah').on('click', function() {
+            $('#formData').attr('action', '/staff/tambah_transaksi');
         })
 
-        $(document).on('click','.tombol-edit',function(){
+        $(document).on('click', '.tombol-edit', function() {
             let dataEdit = $(this).data('edit');
             console.log(dataEdit);
-            if(dataEdit.id_pelanggan == null){
+            if (dataEdit.id_pelanggan == null) {
                 $('#klien').val('pemasok').change();
             }
-            if(dataEdit.id_pemasok == null){
+            if (dataEdit.id_pemasok == null) {
                 console.log('pelanggan')
                 $('#klien').val('pelanggan').change();
             }
@@ -250,7 +252,7 @@
             $('#reff').val(dataEdit.akun.no_akun)
             $('#debit').val(dataEdit.debit)
             $('#kredit').val(dataEdit.kredit)
-            $('#formData').attr('action','/staff/jurnal/update/' + dataEdit.id_jurnal);
+            $('#formData').attr('action', '/staff/jurnal/update/' + dataEdit.id_jurnal);
         })
 
 
@@ -285,8 +287,6 @@
         //   $('#reff').val($(this).find(':selected').data('reff'));
         //   $('#keterangan').val($(this).find(':selected').data('keterangan'));
         // });
-
-
     </script>
 
     @push('script')

@@ -1,7 +1,8 @@
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <img src={{ asset('img/logo.png') }} height="42" width="70">
+            {{-- <img src={{ asset('img/logo.png') }} height="42" width="70"> --}}
+            <img src="https://www.iconpacks.net/icons/2/free-store-icon-2017-thumb.png" width="20" />
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="index.html">TP</a>
@@ -36,7 +37,8 @@
                 {{-- MENU STAFF --}}
                 <li class="menu-header">Staff</li>
                 <li class="nav-item dropdown " id="liData">
-                    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-list-alt"></i>
+                    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                            class="fas fa-list-alt"></i>
                         <span>Data</span></a>
                     <ul class="dropdown-menu">
                         <li id="liManajemenPengguna"><a class="nav-link" href="/staff/data_akun">Akun</a>
@@ -56,17 +58,20 @@
                         <span>Jurnal</span></a>
                 </li>
                 <li class="nav-item dropdown " id="liData">
-                    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-chart-bar"></i>
+                    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                            class="fas fa-chart-bar"></i>
                         <span>Buku Besar</span></a>
                     <ul class="dropdown-menu">
                         <li id="liManajemenPengguna"><a class="nav-link" href="/staff/buku_besar">Umum</a>
                         </li>
                     </ul>
                     <ul class="dropdown-menu">
-                        <li id="liManajemenPengguna"><a class="nav-link" href="/staff/buku_besarPiutang">Pembantu Piutang</a></li>
+                        <li id="liManajemenPengguna"><a class="nav-link" href="/staff/buku_besarPiutang">Pembantu
+                                Piutang</a></li>
                     </ul>
                     <ul class="dropdown-menu">
-                        <li id="liManajemenPengguna"><a class="nav-link" href="/staff/buku_besarUtang">Pembantu Utang</a></li>
+                        <li id="liManajemenPengguna"><a class="nav-link" href="/staff/buku_besarUtang">Pembantu
+                                Utang</a></li>
                     </ul>
                 </li>
                 <li id="liData">
@@ -74,7 +79,8 @@
                         <span>Neraca Saldo</span></a>
                 </li>
                 <li class="nav-item dropdown " id="liData">
-                    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-chart-bar"></i>
+                    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                            class="fas fa-chart-bar"></i>
                         <span>Laporan</span></a>
                     <ul class="dropdown-menu">
                         <li id="liManajemenPengguna"><a class="nav-link" href="/staff/laba_rugi">Laporan L/R</a>
@@ -128,7 +134,7 @@
 
 
         <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-            <a href="{{ URL::to('/logout') }}" class="btn btn-warning btn-lg btn-block btn-icon-split">
+            <a href="{{ URL::to('/logout') }}" class="btn bg-main text-white btn-lg btn-block btn-icon-split">
                 <i class="fas fa-sign-out-alt"></i> Logout
             </a>
         </div>

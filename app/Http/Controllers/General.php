@@ -21,9 +21,9 @@ class General extends Controller
         $this->userModel = new User();
     }
 
-    public function dashboard($bulan=null)
+    public function dashboard($bulan = null)
     {
-        if(!$bulan){
+        if (!$bulan) {
             $bulan = Date('m');
         }
 
@@ -57,7 +57,7 @@ class General extends Controller
     {
         User::where('id', auth()->user()->id)
             ->update(['password' => bcrypt($request->sandi_baru)]);
-            return redirect()->back()->with('message', 'sandi telah terganti');
+        return redirect()->back()->with('message', 'sandi telah terganti');
     }
 
     public function ubahFotoProfile(Request $request)

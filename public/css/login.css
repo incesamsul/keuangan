@@ -71,7 +71,7 @@ form h2 {
     bottom: -2px;
     width: 0;
     height: 2px;
-    background-color: #F7030C;
+    background-color: #65CDF1;
     transition: 0.3s;
 }
 
@@ -84,7 +84,7 @@ form h2 {
 }
 
 .input-div.focus .i i {
-    color: #F7030C;
+    color: #65CDF1;
 }
 
 .input-div.focus div h5 {
@@ -156,7 +156,7 @@ a {
 }
 
 a:hover {
-    color: #F7030C;
+    color: #65CDF1;
 }
 
 .btn {
@@ -168,7 +168,7 @@ a:hover {
     font-size: 1.2rem;
     outline: none;
     border: none;
-    background-image: linear-gradient(to right, #F7030C, #a1191d, #c2e900);
+    background-image: linear-gradient(to right, #65CDF1, #65CDF1, #65CDF1);
     cursor: pointer;
     color: #fff;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -198,15 +198,19 @@ footer {
     .container {
         grid-gap: 5rem;
     }
+
     body {
         background-color: rgb(86, 153, 216);
     }
+
     form h2 {
         color: whitesmoke;
     }
+
     .input-div>div h5 {
         color: snow;
     }
+
     a {
         color: snow;
     }
@@ -216,22 +220,28 @@ footer {
     form {
         width: 290px;
     }
+
     form h2 {
         font-size: 2.4rem;
         margin: 8px 0;
     }
+
     .img img {
         width: 400px;
     }
+
     body {
         background-color: blueviolet;
     }
+
     form h2 {
         color: whitesmoke;
     }
+
     .input-div>div h5 {
         color: snow;
     }
+
     a {
         color: snow;
     }
@@ -241,25 +251,32 @@ footer {
     .img {
         display: none;
     }
+
     .container {
         grid-template-columns: 1fr;
     }
+
     .login-container {
         justify-content: center;
     }
+
     footer {
         width: auto;
         height: auto;
     }
+
     body {
         background-color: black;
     }
+
     form h2 {
         color: whitesmoke;
     }
+
     .input-div>div h5 {
         color: snow;
     }
+
     a {
         color: snow;
     }
